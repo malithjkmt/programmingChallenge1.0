@@ -10,16 +10,24 @@ package app;
  * @author Malith
  */
 public class Console {
-    static boolean freeToPlay = false;
-    static TTT ttt;
-    Game game;
+    public static boolean freeToPlay = false;
+
+    public boolean isFreeToPlay() {
+        return freeToPlay;
+    }
+
+    public void setFreeToPlay(boolean freeToPlay) {
+        this.freeToPlay = freeToPlay;
+    }
+  
     public Console(){
         
          
         //make a new game
-        ttt = new TTT();
+        TTT ttt = new TTT();
         ttt.setVisible(true);
-        game = new Game('x','o'); //for an example I give x to human (that means human plays first)
+        
+        Game game = new Game('x','o',ttt); //for an example I give x to human (that means human plays first)
         //freeToPlay = true; // open the board to play
         game.start();
         

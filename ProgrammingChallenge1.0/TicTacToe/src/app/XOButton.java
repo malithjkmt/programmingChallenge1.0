@@ -9,41 +9,39 @@ package app;
  *
  * @author Malith
  */
-
-import app.Console;
-import app.Game;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class XOButton extends JButton implements ActionListener{
+public class XOButton extends JButton implements ActionListener {
+
     boolean selected = false; // check whether this cell is played previously
-    ImageIcon X,O;
-    
-		/*
-		0:O
-		1:X
-		*/
-    public XOButton(){
+    ImageIcon X, O;
+    /*
+     0:O
+     1:X
+     */
+
+    public XOButton() {
         X = new ImageIcon(this.getClass().getResource("/pic/X.png"));
         O = new ImageIcon(this.getClass().getResource("/pic/O.png"));
         this.addActionListener(this);
 
     }
-    public void actionPerformed(ActionEvent e){
+
+    public void actionPerformed(ActionEvent e) {
         Console.freeToPlay = true;
-        if (!(selected)){
-            
+        if (!(selected)) {
+
             // get the address of the seleceted cell to couple of static variables
-            String buttonName = ((XOButton)e.getSource()).getName();
-            TTT.selectedCellRow = Integer.parseInt(buttonName.substring(0,1));
-            TTT.selectedCellCol = Integer.parseInt(buttonName.substring(1,2));
-            
-            
+            String buttonName = ((XOButton) e.getSource()).getName();
+            TTT.selectedCellRow = Integer.parseInt(buttonName.substring(0, 1));
+            TTT.selectedCellCol = Integer.parseInt(buttonName.substring(1, 2));
+
             selected = true;
-            switch(Game.activePlayer){   // check that who did this move (player0 or player1)
-                case 0:   
+            switch (Game.activePlayer) {   // check that who did this move (player0 or player1)
+                case 0:
                     setIcon(O);
                     Game.board[TTT.selectedCellRow][TTT.selectedCellCol] = 'o'; // mark the play in the matrix
                     Game.activePlayer = 1;   // give playing hand to player1
@@ -52,13 +50,7 @@ public class XOButton extends JButton implements ActionListener{
                     setIcon(X);
                     Game.board[TTT.selectedCellRow][TTT.selectedCellCol] = 'x';  // mark the play in the matrix
                     Game.activePlayer = 0;    // give playing hand to player0
-                    /*State st = new State();
-                    st.s[TTT.selectedCellRow][TTT.selectedCellCol] = 'x';
-                    st.s[0][2]='o';
-                    st.s[2][0]='x';
-                    System.out.println(Referee.win(st));
-                    */             
-                    
+
             }
         }
     }

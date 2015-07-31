@@ -1,4 +1,3 @@
-
 package app;
 
 /**
@@ -6,32 +5,53 @@ package app;
  * @author Malith
  */
 public class Game {
-    static Character board[][] = new Character[3][3]; // this is commom for entire game....
+
+    static Character board[][] = new Character[3][3]; // this is commom for entire game, entire time....
     static int activePlayer = 1; // here I give the first move chance to player who gets '1' // haven't used???
-    static boolean gameOver = false;
+
+    private boolean gameOver = false;
+
     char humanCard = 'x';// <<<<<<<<< this is a tempory fix...... this should be blank
     char pcCard = 'o';
-    
-    public Game(){
-        
-    }
-       
-    public Game(char humanCard, char pcCard){
+    TTT ttt;
+
+    private Referee ref;
+    private Player human;
+    private Pc pc;
+
+
+    public Game(char humanCard, char pcCard, TTT ttt) {
         this.humanCard = humanCard;
-        
+        this.ttt = ttt;
         this.pcCard = pcCard;
+
+        ref = new Referee(this); 
+        human = new Player(humanCard);
+        pc = new Pc(pcCard, this);
     }
-    Referee ref = new Referee();////////????
-    Player human = new Player(humanCard);
-    Pc pc = new Pc(pcCard);
+
     
-    public void start(){
+     // Let's assume player 1 is the human player
+    // some thread has to run...... any player must not play until refree decide each play
+    public void start() {
         ref.reffer(human, pc);
     }
-    
-    // Let's assume player 1 is the human player
-    // some thread has to run...... any player must not play until refree decide each play
-    
-    
-    
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
+
+    public Referee getRef() {
+        return ref;
+    }
+
+   
+    public TTT getTtt() {
+        return ttt;
+    }
+
 }

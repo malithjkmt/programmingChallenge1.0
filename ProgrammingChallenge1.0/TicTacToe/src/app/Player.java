@@ -13,7 +13,7 @@ public class Player {
     }
     
     public void play(){
-        System.out.println("Hello!!! now it's your move.. please hurry");
+        System.out.println("Hello!!! bugger, now it's your move.. please hurry");
     }
   
     

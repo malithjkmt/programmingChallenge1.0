@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package app;
-import app.XOButton;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,21 +13,23 @@ import java.util.Map;
  * @author Malith
  */
 public class TTT extends javax.swing.JFrame {
+
     static int selectedCellRow;
     static int selectedCellCol;
     
+
     /**
      * Creates new form TTT
      */
-    public TTT() {
-        initComponents();  
+    public TTT( ) {
+        initComponents();
         
-        
+
     }
-    
+
     //unit tested(working)
-    public void gclick(int r, int c){
-        
+    public void gclick(int r, int c) {
+
         //map address from the matrix to button's variable name
         String button = "b" + Integer.toString(r) + Integer.toString(c);
         Map<String, XOButton> map = new HashMap<>();
@@ -40,12 +42,10 @@ public class TTT extends javax.swing.JFrame {
         map.put("b20", b20);
         map.put("b21", b21);
         map.put("b22", b22);
-        
+
         // do the click(this means Pc plays a step)
         map.get(button).doClick();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -310,7 +310,7 @@ public class TTT extends javax.swing.JFrame {
         MultiPlayerData.setVisible(true);
         NewGame.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
-     
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame MultiPlayerData;
