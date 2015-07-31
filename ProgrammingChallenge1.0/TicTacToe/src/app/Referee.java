@@ -27,20 +27,20 @@ public class Referee {
                 try {Thread.sleep(1);} catch (InterruptedException ex) {Logger.getLogger(Referee.class.getName()).log(Level.SEVERE, null, ex);}
             }     
             
-            over = CheckGameStatus(new State(), human.xORo);
+            over = CheckGameStatus(new State(), pc.getxORo());
 
             if (over) {
-
+                
                 break;
             }
 
             pc.play();
             System.out.println("pc played!!!");
 
-            over = CheckGameStatus(new State(), pc.xORo);
+            over = CheckGameStatus(new State(), pc.getxORo());
 
             if (over) {
-
+                    
                 break;
             }
             Console.freeToPlay = false; // lock the board until human plays
@@ -99,7 +99,7 @@ public class Referee {
             game.setGameOver(true);
             return true;
 
-        } else if (win(state, Pc.opponentSymbol(pcCard))) {
+        } else if (win(state, SmartPc.opponentSymbol(pcCard))) {
             JOptionPane.showMessageDialog(null, "You Won!!!!");
             game.setGameOver(true);
             return true;

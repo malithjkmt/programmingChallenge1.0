@@ -20,14 +20,20 @@ public class Game {
     private Pc pc;
 
 
-    public Game(char humanCard, char pcCard, TTT ttt) {
+    public Game(char humanCard, char pcCard, TTT ttt, char difficulty) {
         this.humanCard = humanCard;
         this.ttt = ttt;
         this.pcCard = pcCard;
 
         ref = new Referee(this); 
         human = new Player(humanCard);
-        pc = new Pc(pcCard, this);
+        if(difficulty == 'd'){
+            pc = new SmartPc(pcCard, this);
+        }
+        else{
+            pc = new DumbPc(pcCard, this);
+        }
+        
     }
 
     

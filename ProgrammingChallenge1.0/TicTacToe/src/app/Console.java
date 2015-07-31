@@ -5,11 +5,14 @@
  */
 package app;
 
+import com.jtattoo.plaf.noire.NoireLookAndFeel;
+
 /**
  *
  * @author Malith
  */
 public class Console {
+
     public static boolean freeToPlay = false;
 
     public boolean isFreeToPlay() {
@@ -19,20 +22,21 @@ public class Console {
     public void setFreeToPlay(boolean freeToPlay) {
         this.freeToPlay = freeToPlay;
     }
-  
-    public Console(){
-        
-         
+
+    public Console(char difficulty) {
+
+        System.out.println("malith");
         //make a new game
         TTT ttt = new TTT();
+
         ttt.setVisible(true);
-        
-        Game game = new Game('x','o',ttt); //for an example I give x to human (that means human plays first)
+
+        Game game = new Game('x', 'o', ttt, 'e'); //for an example I give x to human (that means human plays first)
         //freeToPlay = true; // open the board to play
         game.start();
-        
+
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -43,27 +47,13 @@ public class Console {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TTT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TTT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TTT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            javax.swing.UIManager.setLookAndFeel(new NoireLookAndFeel());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TTT.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        new Console();
-        
-        
-        
-        
+        new Console('d');
+
     }
 }
