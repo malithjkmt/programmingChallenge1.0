@@ -34,7 +34,7 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnStart" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -45,7 +45,7 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnStart" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -71,7 +71,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jTextField1" min="-2" pref="152" max="-2" attributes="0"/>
+                      <Component id="txtName" min="-2" pref="152" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="52" max="32767" attributes="0"/>
               </Group>
@@ -82,7 +82,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="txtName" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -102,7 +102,7 @@
             <Property name="text" type="java.lang.String" value="Name"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="txtName">
           <Properties>
             <Property name="text" type="java.lang.String" value=" "/>
           </Properties>
@@ -124,10 +124,13 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnStart">
       <Properties>
         <Property name="text" type="java.lang.String" value="start"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStartActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

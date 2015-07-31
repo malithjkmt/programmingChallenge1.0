@@ -24,9 +24,7 @@ public class Test {
             dbConnector = new DbConnector();
             personDAC = new PersonDAC(dbConnector.getMyConn());
 
-        } catch (IOException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
 
