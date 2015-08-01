@@ -47,8 +47,8 @@ public class HighScores extends javax.swing.JDialog {
         } catch (Exception ex) {
             Logger.getLogger(HighScores.class.getName()).log(Level.SEVERE, null, ex);
         }
-         setLocationRelativeTo(null);  // *** this will center the app ***
-         table.getColumnModel().getColumn(0).setPreferredWidth(100);
+        setLocationRelativeTo(null);  // *** this will center the app ***
+        table.getColumnModel().getColumn(0).setPreferredWidth(100);
     }
 
     /**
@@ -75,14 +75,19 @@ public class HighScores extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setText("Select Player");
+        jButton2.setText("Start Game");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(636, Short.MAX_VALUE)
+                .addContainerGap(644, Short.MAX_VALUE)
                 .addComponent(btnDelete)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
@@ -161,53 +166,72 @@ public class HighScores extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        try{
+        try {
             //get selected row
             int row = table.getSelectedRow();
-            
+
             //make sure a row is selected
-            if(row<0){
+            if (row < 0) {
                 JOptionPane.showMessageDialog(rootPane, "You must select a player", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             //get confirmation from the user before deleting
             int response = JOptionPane.showConfirmDialog(rootPane, "This will delete this Player!!!", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if(response != JOptionPane.YES_OPTION){
+            if (response != JOptionPane.YES_OPTION) {
                 return;
             }
             // get the current Person
-            Person tempPerson = (Person)table.getValueAt(row, -1);
-            
+            Person tempPerson = (Person) table.getValueAt(row, -1);
+
             // delete the person
             personDAC.deletePerson(tempPerson.getName());
-            
+
             // refresh GUI
             refreshGUI();
-            
-                   
+
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error deleting the contact"+ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            
+            JOptionPane.showMessageDialog(this, "Error deleting the contact" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
-    
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //get selected row
+        int row = table.getSelectedRow();
+
+        //make sure a row is selected
+        if (row < 0) {
+            JOptionPane.showMessageDialog(rootPane, "You must select a player", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        // get the current Person
+            Person tempPerson = (Person) table.getValueAt(row, -1);
+        String pName = tempPerson.getName();
+        
+        System.out.println("4"+pName+"4");
+        this.dispose();
+        new GameMenu(pName).setVisible(true);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * method will refresh the GUI showing the latest update on the table
-     * */
-    public void refreshGUI(){
-         try {
-                // get all person theough the DAC to a tempory List
-                List personList = personDAC.getAllPerson();
-               
-                // create the model and update the "table"
-                PersonTableModel model = new PersonTableModel(personList);
-                table.setModel(model);
+     *
+     */
+    public void refreshGUI() {
+        try {
+            // get all person theough the DAC to a tempory List
+            List personList = personDAC.getAllPerson();
+
+            // create the model and update the "table"
+            PersonTableModel model = new PersonTableModel(personList);
+            table.setModel(model);
 
         } catch (Exception exc) {
-                JOptionPane.showMessageDialog(this, "Error: " + exc, "Error", JOptionPane.ERROR_MESSAGE); 
+            JOptionPane.showMessageDialog(this, "Error: " + exc, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */

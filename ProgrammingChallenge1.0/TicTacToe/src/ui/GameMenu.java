@@ -21,6 +21,9 @@ import javax.swing.JOptionPane;
  */
 public class GameMenu extends javax.swing.JFrame {
 
+    boolean loading = false;
+    String playerName;
+
     /**
      * Creates new form GameMenu
      */
@@ -30,6 +33,19 @@ public class GameMenu extends javax.swing.JFrame {
         buttonGroup1.add(rbtnHard);
         rbtnHard.setSelected(true);
         setLocationRelativeTo(null);  // *** this will center the app ***
+    }
+
+    public GameMenu(String playerName) {
+        loading = true;
+        this.playerName = playerName;
+
+        initComponents();
+        txtName.setText(playerName);
+        buttonGroup1.add(rbtnEasy);
+        buttonGroup1.add(rbtnHard);
+        rbtnHard.setSelected(true);
+        setLocationRelativeTo(null);  // *** this will center the app ***
+
     }
 
     /**
@@ -56,14 +72,14 @@ public class GameMenu extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("New Player Name");
+        jLabel1.setText("Player Name");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipady = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(50, 80, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(50, 110, 0, 0);
         getContentPane().add(jLabel1, gridBagConstraints);
 
         txtName.setFont(new java.awt.Font("Kristen ITC", 1, 14)); // NOI18N
@@ -72,7 +88,7 @@ public class GameMenu extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.ipadx = 204;
+        gridBagConstraints.ipadx = 209;
         gridBagConstraints.ipady = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(40, 60, 0, 0);
@@ -109,7 +125,6 @@ public class GameMenu extends javax.swing.JFrame {
         btnStart.setText("start");
         btnStart.setBorder(null);
         btnStart.setContentAreaFilled(false);
-        btnStart.setOpaque(false);
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStartActionPerformed(evt);
@@ -167,7 +182,10 @@ public class GameMenu extends javax.swing.JFrame {
         try {
             DbConnector dbConnector = new DbConnector();
             PersonDAC personDAC = new PersonDAC(dbConnector.getMyConn());
-            personDAC.addPerson(new Person(playerName, 0, 0, 0, 0, 0, 0, 0, 0));
+
+           if(!loading) {
+                personDAC.addPerson(new Person(playerName, 0, 0, 0, 0, 0, 0, 0, 0));
+            }
             personDAC.close(dbConnector.getMyConn(), null, null);
 
         } catch (IOException ex) {
@@ -178,9 +196,9 @@ public class GameMenu extends javax.swing.JFrame {
             Logger.getLogger(GameMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.dispose();
-        
+
         Console console = new Console(difficulty, playerName);
-        
+
     }//GEN-LAST:event_btnStartActionPerformed
 
     /**
