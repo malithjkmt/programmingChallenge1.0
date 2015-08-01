@@ -56,16 +56,51 @@ public class PersonDAC {
     }
 
     /**
-     * add a new person
-     * */
-    public void addPerson(Person person) throws SQLException{
+     * return the person object according to the name AC number
+     *
+     */
+    public Person searchPerson(String keyWord) throws Exception {
+        keyWord = "%"+keyWord +"%";
         PreparedStatement myStmt = null;
-        try{
+        ResultSet myRs = null;
+        String query;
+        Person person = null;
+        query = "select * from person where Name like ?";
+        myStmt = myConn.prepareStatement(query);
+        myStmt.setString(1, keyWord);
+
+        // execute statement
+        myRs = myStmt.executeQuery();
+        
+        while (myRs.next()) {
+            String name = myRs.getString(1);
+            int singleTotalPlays = myRs.getInt(2);
+            int singleEasyWins = myRs.getInt(3);
+            int singleEasyDraws = myRs.getInt(4);
+            int singleHardWins = myRs.getInt(5);
+            int singleHardDraws = myRs.getInt(6);
+            int multiTotalPlays = myRs.getInt(7);
+            int multidraws = myRs.getInt(8);
+            int multiWins = myRs.getInt(9);
+            person = new Person(name, singleTotalPlays, singleEasyWins, singleEasyDraws, singleHardWins, singleHardDraws, multiTotalPlays, multidraws, multiWins);
+            
+        }
+        return person;
+       
+    }
+
+    /**
+     * add a new person
+     *
+     */
+    public void addPerson(Person person) throws SQLException {
+        PreparedStatement myStmt = null;
+        try {
             //prepare statement
             myStmt = myConn.prepareStatement("INSERT INTO person (Name, SingleTotalPlays, SingleEasyWins, SingleEasyDraws, SingleHardWins, SingleHardDraws, MultiTotalPlays, Multidraws, MultiWins)values (?,?,?,?,?,?,?,?,?)");
-            
+
             //set params
-            myStmt.setString(1,person.getName() );
+            myStmt.setString(1, person.getName());
             myStmt.setInt(2, person.getSingleTotalPlays());
             myStmt.setInt(3, person.getSingleEasyWins());
             myStmt.setInt(4, person.getSingleEasyDraws());
@@ -74,23 +109,21 @@ public class PersonDAC {
             myStmt.setInt(7, person.getMultiTotalPlays());
             myStmt.setInt(8, person.getMultiWins());
             myStmt.setInt(9, person.getMultidraws());
-                      
+
             // execute the statement
             myStmt.executeUpdate();
-        }
-        finally{
+        } finally {
             close(myStmt);
         }
     }
-    
-    public void updatePerson(Person person) throws SQLException{
+
+    public void updatePerson(Person person) throws SQLException {
         PreparedStatement myStmt = null;
-        try{
+        try {
             //prepare statement
             myStmt = myConn.prepareStatement("update person set  SingleTotalPlays=?, SingleEasyWins=?, SingleEasyDraws=?, SingleHardWins=?, SingleHardDraws=?, MultiTotalPlays=?, Multidraws=?, MultiWins=? where Name=?");
-            
+
             //set params
-           
             myStmt.setInt(1, person.getSingleTotalPlays());
             myStmt.setInt(2, person.getSingleEasyWins());
             myStmt.setInt(3, person.getSingleEasyDraws());
@@ -99,33 +132,31 @@ public class PersonDAC {
             myStmt.setInt(6, person.getMultiTotalPlays());
             myStmt.setInt(7, person.getMultiWins());
             myStmt.setInt(8, person.getMultidraws());
-             myStmt.setString(9,person.getName() );
-                      
+            myStmt.setString(9, person.getName());
+
             // execute the statement
             myStmt.executeUpdate();
-        }
-        finally{
+        } finally {
             close(myStmt);
         }
     }
-    
-    public void deletePerson (String name) throws SQLException{
+
+    public void deletePerson(String name) throws SQLException {
         PreparedStatement myStmt = null;
-        try{
+        try {
             // prepare statement
             myStmt = myConn.prepareStatement("delete from person where Name=?");
-            
+
             //set param
             myStmt.setString(1, name);
-            
+
             //execute statement
             myStmt.executeUpdate();
-        }
-        finally{
+        } finally {
             close(myStmt);
         }
     }
-    
+
     private Person convertRowToPerson(ResultSet myRs) throws SQLException {
 
         String name = myRs.getString(1);
@@ -142,7 +173,7 @@ public class PersonDAC {
         return tempPerson;
     }
 
-    private static void close(Connection myConn, Statement myStmt, ResultSet myRs) throws SQLException {
+    public void close(Connection myConn, Statement myStmt, ResultSet myRs) throws SQLException {
 
         if (myRs != null) {
             myRs.close();

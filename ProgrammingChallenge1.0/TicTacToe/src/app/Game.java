@@ -8,7 +8,7 @@ public class Game {
 
     static Character board[][] = new Character[3][3]; // this is commom for entire game, entire time....
     static int activePlayer = 1; // here I give the first move chance to player who gets '1' // haven't used???
-
+    private Character difficulty;
     private boolean gameOver = false;
 
     char humanCard = 'x';// <<<<<<<<< this is a tempory fix...... this should be blank
@@ -18,15 +18,18 @@ public class Game {
     private Referee ref;
     private Player human;
     private Pc pc;
+    private String playerName;
 
-
-    public Game(char humanCard, char pcCard, TTT ttt, char difficulty) {
+    public Game(char humanCard, char pcCard, TTT ttt, char difficulty, String playerName) {
         this.humanCard = humanCard;
         this.ttt = ttt;
         this.pcCard = pcCard;
-
+        this.playerName = playerName;
+        this.difficulty = difficulty;
+        
         ref = new Referee(this); 
         human = new Player(humanCard);
+        
         if(difficulty == 'd'){
             pc = new SmartPc(pcCard, this);
         }
@@ -58,6 +61,14 @@ public class Game {
    
     public TTT getTtt() {
         return ttt;
+    }
+
+    public Character getDifficulty() {
+        return difficulty;
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 
 }

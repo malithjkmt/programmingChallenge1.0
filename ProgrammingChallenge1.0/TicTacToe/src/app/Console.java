@@ -6,6 +6,9 @@
 package app;
 
 import com.jtattoo.plaf.noire.NoireLookAndFeel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import ui.GameMenu;
 
 /**
  *
@@ -14,29 +17,46 @@ import com.jtattoo.plaf.noire.NoireLookAndFeel;
 public class Console {
 
     public static boolean freeToPlay = false;
+    private char difficulty;
+    private String playerName;
+    
+   
 
-    public boolean isFreeToPlay() {
+    public Console(char difficulty, String playerName, GameMenu gameMenu) {
+        gameMenu.setVisible(false);
+        
+        this.difficulty = difficulty;
+        this.playerName = playerName;
+        
+        TTT ttt= new TTT(this);
+        
+       ttt.setVisible(true);
+        
+        Game game = new Game('x', 'o', ttt, difficulty, playerName); //for an example I give x to human (that means human plays first)
+        //freeToPlay = true; // open the board to play
+        game.start();
+       
+    }
+
+    /* public void createNewGame(){
+          //make a new game
+        TTT ttt = new TTT(this);
+
+        ttt.setVisible(true);
+
+        Game game = new Game('x', 'o', ttt, 'd', playerName); //for an example I give x to human (that means human plays first)
+        //freeToPlay = true; // open the board to play
+        game.start();
+     }*/
+     
+      public boolean isFreeToPlay() {
         return freeToPlay;
     }
 
     public void setFreeToPlay(boolean freeToPlay) {
         this.freeToPlay = freeToPlay;
     }
-
-    public Console(char difficulty) {
-
-        System.out.println("malith");
-        //make a new game
-        TTT ttt = new TTT();
-
-        ttt.setVisible(true);
-
-        Game game = new Game('x', 'o', ttt, 'e'); //for an example I give x to human (that means human plays first)
-        //freeToPlay = true; // open the board to play
-        game.start();
-
-    }
-
+    
     /**
      * @param args the command line arguments
      */
@@ -53,7 +73,7 @@ public class Console {
         }
         //</editor-fold>
 
-        new Console('d');
+        //new Console('d',"Malith");
 
     }
 }

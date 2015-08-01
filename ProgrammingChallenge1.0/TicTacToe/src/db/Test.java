@@ -50,11 +50,17 @@ public class Test {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    public void search(String name){
+        try {
+            System.out.println(personDAC.searchPerson(name).getName());
+        } catch (Exception ex) {
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public static void main(String args[]) {
         Test test = new Test();
-        Person person = new Person("jaka",2,1,1,1,1,1,1,1);
-        test.delete("jaka");
+       
+        test.search("kalana");
     }
 
 }

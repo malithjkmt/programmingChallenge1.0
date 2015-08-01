@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class PersonTableModel extends AbstractTableModel {
 
-    private String[] columnNames = {"Name", "SingleTotalPlays", "SingleEasyWins", "SingleEasyDraws", "SingleHardWins", "SingleHardDraws", "MultiTotalPlays", "Multidraws", "MultiWins",};// this should come from user input..... user can customize what fields to show
+    private String[] columnNames = {"<html>Player<br>Name</html>", "<html>Single Player<br>TotalPlays</html>", "<html>Single Player<br>Easy Wins</html>", "<html>Single Player<br>Easy Draws</html>", "<html>Single Player<br>Hard Wins</html>", "<html>Single Player<br>Hard Draws</html>", "<html>Multi Player<br>Total Plays</html>", "<html>Multi Player<br>Draws</html>", "<html>Multi Player<br>Wins</html>",};// this should come from user input..... user can customize what fields to show
     private List<Person> person;
 
     public PersonTableModel(List<Person> thePerson) {
