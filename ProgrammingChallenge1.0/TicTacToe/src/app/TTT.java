@@ -14,17 +14,22 @@ import java.util.Map;
  */
 public class TTT extends javax.swing.JFrame {
 
-    static int selectedCellRow;
-    static int selectedCellCol;
-    private Console console;
+    volatile private int selectedCellRow;
+    volatile private int selectedCellCol;
+    Console console;
+   
     /**
      * Creates new form TTT
      */
-    public TTT(Console console) {
-        this.console = console;
+    public TTT(Console console ) {
+      this.console = console;
         initComponents();
         setLocationRelativeTo(null);  // *** this will center the app ***
+       
+    }
 
+    public Console getConsole() {
+        return console;
     }
 
     //unit tested(working)
@@ -70,15 +75,15 @@ public class TTT extends javax.swing.JFrame {
 
         buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        b00 = new app.XOButton();
-        b01 = new app.XOButton();
-        b02 = new app.XOButton();
-        b10 = new app.XOButton();
-        b11 = new app.XOButton();
-        b12 = new app.XOButton();
-        b20 = new app.XOButton();
-        b21 = new app.XOButton();
-        b22 = new app.XOButton();
+        b00 = new app.XOButton(this);
+        b01 = new app.XOButton(this);
+        b02 = new app.XOButton(this);
+        b10 = new app.XOButton(this);
+        b11 = new app.XOButton(this);
+        b12 = new app.XOButton(this);
+        b20 = new app.XOButton(this);
+        b21 = new app.XOButton(this);
+        b22 = new app.XOButton(this);
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btnPlayAgain = new javax.swing.JButton();
@@ -91,7 +96,6 @@ public class TTT extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TicTacToe 2015");
         setAlwaysOnTop(true);
-        setMinimumSize(new java.awt.Dimension(900, 900));
         setResizable(false);
 
         b00.setName("00"); // NOI18N
@@ -222,6 +226,22 @@ public class TTT extends javax.swing.JFrame {
        // console.createNewGame();
         this.dispose();
     }//GEN-LAST:event_btnPlayAgainActionPerformed
+
+    public synchronized int getSelectedCellRow() {
+        return selectedCellRow;
+    }
+
+    public synchronized void setSelectedCellRow(int selectedCellRow) {
+        this.selectedCellRow = selectedCellRow;
+    }
+
+    public synchronized  int getSelectedCellCol() {
+        return selectedCellCol;
+    }
+
+    public synchronized void setSelectedCellCol(int selectedCellCol) {
+        this.selectedCellCol = selectedCellCol;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

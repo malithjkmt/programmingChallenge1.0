@@ -6,8 +6,6 @@
 package app;
 
 import com.jtattoo.plaf.noire.NoireLookAndFeel;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import ui.GameMenu;
 
 /**
@@ -15,48 +13,61 @@ import ui.GameMenu;
  * @author Malith
  */
 public class Console {
-
+    Game game;
     public static boolean freeToPlay = false;
-    private char difficulty;
-    private String playerName;
-    
-   
 
     public Console(char difficulty, String playerName, GameMenu gameMenu) {
-        gameMenu.setVisible(false);
+        gameMenu.dispose();
         
-        this.difficulty = difficulty;
-        this.playerName = playerName;
-        
-        TTT ttt= new TTT(this);
-        
-       ttt.setVisible(true);
-        
+        TTT ttt = new TTT(this);
+        ttt.setVisible(true);
+
         Game game = new Game('x', 'o', ttt, difficulty, playerName); //for an example I give x to human (that means human plays first)
         //freeToPlay = true; // open the board to play
+
         game.start();
+
+    }
+
+    public Console(char difficulty, String playerName) {
+      
+         
+        
+        
+        
+                TTT ttt = new TTT(this);
+                ttt.setVisible(true);
        
+        
+         game = new Game('x', 'o',ttt, difficulty, playerName); //for an example I give x to human (that means human plays first)
+        //freeToPlay = true; // open the board to play
+
+        game.start();
+
+    }
+
+    public Game getGame() {
+        return game;
     }
 
     /* public void createNewGame(){
-          //make a new game
-        TTT ttt = new TTT(this);
+     //make a new game
+     TTT ttt = new TTT(this);
 
-        ttt.setVisible(true);
+     ttt.setVisible(true);
 
-        Game game = new Game('x', 'o', ttt, 'd', playerName); //for an example I give x to human (that means human plays first)
-        //freeToPlay = true; // open the board to play
-        game.start();
+     Game game = new Game('x', 'o', ttt, 'd', playerName); //for an example I give x to human (that means human plays first)
+     //freeToPlay = true; // open the board to play
+     game.start();
      }*/
-     
-      public boolean isFreeToPlay() {
+    public boolean isFreeToPlay() {
         return freeToPlay;
     }
 
     public void setFreeToPlay(boolean freeToPlay) {
         this.freeToPlay = freeToPlay;
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -73,7 +84,7 @@ public class Console {
         }
         //</editor-fold>
 
-        //new Console('d',"Malith");
+        new Console('d', "Malith");
 
     }
 }

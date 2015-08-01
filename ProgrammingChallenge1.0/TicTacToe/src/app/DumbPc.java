@@ -35,14 +35,14 @@ public class DumbPc extends Pc {
     }
 
     public void play() {
-        State initialState = new State(); //get the initial state to the temporary varialbe 'initialState'
+        State initialState = new State(game.getBoard()); //get the initial state to the temporary varialbe 'initialState'
 
         dumbMax(initialState, xORo);   //after this minimax calling, now Pc knows(perfectRow, perfectCol variables are set) the address of the perfect cell, so pc clicks it
 
         game.getTtt().gclick(perfectRow, perfectCol); // pc clicks the perfect cell
 
         // check whether that this play ended the game // ???????????????????????? this is not a efficient code
-        State temp = new State();
+        State temp = new State(game.getBoard());
         
         Console.freeToPlay = true;
     }

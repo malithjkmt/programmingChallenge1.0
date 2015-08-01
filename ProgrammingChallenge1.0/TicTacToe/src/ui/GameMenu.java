@@ -177,8 +177,9 @@ public class GameMenu extends javax.swing.JFrame {
             txtName.setText(null);
             Logger.getLogger(GameMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.dispose();
         
-        Console console = new Console(difficulty, playerName,this);
+        Console console = new Console(difficulty, playerName);
         
     }//GEN-LAST:event_btnStartActionPerformed
 

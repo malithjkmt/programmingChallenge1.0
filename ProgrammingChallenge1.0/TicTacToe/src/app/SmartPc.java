@@ -17,13 +17,13 @@ public class SmartPc extends Pc{
 
     int perfectRow;
     int perfectCol;
-    Game game;
+    private Game game;
     char xORo;
 
     public SmartPc(char xORo, Game game) {
         this.xORo = xORo;
         this.game = game;
-        
+        this.game = game;
     }
 
     public void setPerfectAddress(int row, int col) {
@@ -32,14 +32,14 @@ public class SmartPc extends Pc{
     }
 
     public void play() {
-        State initialState = new State(); //get the initial state to the temporary varialbe 'initialState'
+        State initialState = new State(game.getBoard()); //get the initial state to the temporary varialbe 'initialState'
 
         minimax(initialState, 0, xORo);   //after this minimax calling, now SmartPc knows(perfectRow, perfectCol variables are set) the address of the perfect cell, so pc clicks it
-
+       
         game.getTtt().gclick(perfectRow, perfectCol); // pc clicks the perfect cell
 
         // check whether that this play ended the game // ???????????????????????? this is not a efficient code
-        State temp = new State();
+        State temp = new State(game.getBoard());
         //game.getRef().CheckGameStatus(temp, xORo);
 
         /*if(Referee.boardFull(temp) || Referee.win(temp, xORo)||Referee.win(temp, opponentSymbol(xORo))){

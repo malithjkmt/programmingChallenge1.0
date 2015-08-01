@@ -13,26 +13,38 @@ import db.Person;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class Referee {
+public class Referee implements Runnable {
 
+    Player human;
+    Pc pc;
     private Game game;
+    private Object lock;
 
-    public Referee(Game game) {
+    public Referee(Game game, Player human, Pc pc, Object lock) {
         this.game = game;
+        this.pc = pc;
+        this.human = human;
+        this.lock = lock;
+
     }
 
-    public void reffer(Player human, Pc pc) {
+    public void reffer() {
         boolean over = false;
 
         while (!game.isGameOver()) {
+
             human.play();
 
-            // infinity loop until human plays
-            while (!(Console.freeToPlay)) {
-                System.out.print("play! ");
+            try {
+                synchronized (lock) {
+
+                    lock.wait();
+                }
+            } catch (InterruptedException e) {
+                System.out.println("INterrupted!!!!");
             }
 
-            over = CheckGameStatus(new State(), pc.getxORo());
+            over = CheckGameStatus(new State(game.getBoard()), pc.getxORo());
 
             if (over) {
                 game.getTtt().closeGame();
@@ -42,13 +54,15 @@ public class Referee {
             pc.play();
             System.out.println("pc played!!!");
 
-            over = CheckGameStatus(new State(), pc.getxORo());
+            game.printBoard();
+            over = CheckGameStatus(new State(game.getBoard()), pc.getxORo());
 
             if (over) {
                 game.getTtt().closeGame();
                 break;
             }
             Console.freeToPlay = false; // lock the board until human plays
+
         }
     }
 
@@ -96,21 +110,38 @@ public class Referee {
     }
 
     //check the last play, if it's an end game finish the game and display the result
-    public boolean CheckGameStatus(State state, char pcCard) {
+    public synchronized boolean CheckGameStatus(State state, char pcCard) {
+
         if (win(state, pcCard)) {
-            JOptionPane.showMessageDialog(null, "Pc Won!");
-            updatePlayerDB(game.getPlayerName(), game.getDifficulty(), 'l');
+
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    JOptionPane.showMessageDialog(game.getTtt(), "Pc Won!");
+                }
+            });
+
+             updatePlayerDB(game.getPlayerName(), game.getDifficulty(), 'l');
             game.setGameOver(true);
             return true;
 
         } else if (win(state, SmartPc.opponentSymbol(pcCard))) {
-            JOptionPane.showMessageDialog(null, "You Won!!!!");
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    JOptionPane.showMessageDialog(game.getTtt(), "You Won!!!!");
+                }
+            });
+
             updatePlayerDB(game.getPlayerName(), game.getDifficulty(), 'w');
             game.setGameOver(true);
             return true;
         } else if (boardFull(state)) {
-            JOptionPane.showMessageDialog(null, "Game is a draw!!!!");
-            updatePlayerDB(game.getPlayerName(), game.getDifficulty(), 'd');
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    JOptionPane.showMessageDialog(game.getTtt(), "Game is a draw!!!!");
+                }
+            });
+
+             updatePlayerDB(game.getPlayerName(), game.getDifficulty(), 'd');
             game.setGameOver(true);
             return true;
         }
@@ -122,7 +153,7 @@ public class Referee {
             DbConnector dbConnector = new DbConnector();
             PersonDAC personDAC = new PersonDAC(dbConnector.getMyConn());
             Person player = personDAC.searchPerson(PlayerName);
-            
+
             String name = player.getName();
             int singleTotalPlays = player.getSingleTotalPlays();
             int singleEasyWins = player.getSingleEasyWins();
@@ -132,26 +163,26 @@ public class Referee {
             int multiTotalPlays = player.getMultiTotalPlays();
             int multidraws = player.getMultidraws();
             int multiWins = player.getMultiWins();
-            
+
             if (difficulty == 'e') {
-                if(winningStatus == 'w'){
-                personDAC.updatePerson(new Person(PlayerName,singleTotalPlays+1,singleEasyWins+1,singleEasyDraws,singleHardWins,singleHardDraws,multiTotalPlays,multidraws,multiWins ));
+                if (winningStatus == 'w') {
+                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins + 1, singleEasyDraws, singleHardWins, singleHardDraws, multiTotalPlays, multidraws, multiWins));
                 }
-                if(winningStatus == 'd'){
-                    personDAC.updatePerson(new Person(PlayerName,singleTotalPlays+1,singleEasyWins,singleEasyDraws+1,singleHardWins,singleHardDraws,multiTotalPlays,multidraws,multiWins ));
+                if (winningStatus == 'd') {
+                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins, singleEasyDraws + 1, singleHardWins, singleHardDraws, multiTotalPlays, multidraws, multiWins));
                 }
-                 if(winningStatus == 'l'){
-                personDAC.updatePerson(new Person(PlayerName,singleTotalPlays+1,singleEasyWins,singleEasyDraws,singleHardWins,singleHardDraws,multiTotalPlays,multidraws,multiWins ));
+                if (winningStatus == 'l') {
+                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins, singleEasyDraws, singleHardWins, singleHardDraws, multiTotalPlays, multidraws, multiWins));
                 }
             } else {
-                 if(winningStatus == 'w'){
-                personDAC.updatePerson(new Person(PlayerName,singleTotalPlays+1,singleEasyWins,singleEasyDraws,singleHardWins+1,singleHardDraws,multiTotalPlays,multidraws,multiWins ));
+                if (winningStatus == 'w') {
+                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins, singleEasyDraws, singleHardWins + 1, singleHardDraws, multiTotalPlays, multidraws, multiWins));
                 }
-                if(winningStatus == 'd'){
-                     personDAC.updatePerson(new Person(PlayerName,singleTotalPlays+1,singleEasyWins,singleEasyDraws,singleHardWins,singleHardDraws+1,multiTotalPlays,multidraws,multiWins ));
+                if (winningStatus == 'd') {
+                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins, singleEasyDraws, singleHardWins, singleHardDraws + 1, multiTotalPlays, multidraws, multiWins));
                 }
-                 if(winningStatus == 'l'){
-                personDAC.updatePerson(new Person(PlayerName,singleTotalPlays+1,singleEasyWins,singleEasyDraws,singleHardWins,singleHardDraws,multiTotalPlays,multidraws,multiWins ));
+                if (winningStatus == 'l') {
+                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins, singleEasyDraws, singleHardWins, singleHardDraws, multiTotalPlays, multidraws, multiWins));
                 }
             }
         } catch (IOException | SQLException ex) {
@@ -161,4 +192,10 @@ public class Referee {
         }
 
     }
+
+    @Override
+    public void run() {
+        reffer();
+    }
+
 }
