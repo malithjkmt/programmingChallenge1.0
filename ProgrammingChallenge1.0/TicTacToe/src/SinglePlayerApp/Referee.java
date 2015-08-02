@@ -1,7 +1,7 @@
 /*
  Thread to see whether some one have won
  */
-package app;
+package SinglePlayerApp;
 
 import java.util.Objects;
 import java.util.logging.Level;

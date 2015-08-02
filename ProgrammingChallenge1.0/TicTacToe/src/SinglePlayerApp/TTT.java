@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app;
+package SinglePlayerApp;
 
 import java.util.HashMap;
 import java.util.Map;
-import ui.MainMenue;
+import SinglePlayerUI.MainMenue;
 
 /**
  *
@@ -92,15 +92,15 @@ public class TTT extends javax.swing.JFrame {
 
         buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        b00 = new app.XOButton(this);
-        b01 = new app.XOButton(this);
-        b02 = new app.XOButton(this);
-        b10 = new app.XOButton(this);
-        b11 = new app.XOButton(this);
-        b12 = new app.XOButton(this);
-        b20 = new app.XOButton(this);
-        b21 = new app.XOButton(this);
-        b22 = new app.XOButton(this);
+        b00 = new SinglePlayerApp.XOButton(this);
+        b01 = new SinglePlayerApp.XOButton(this);
+        b02 = new SinglePlayerApp.XOButton(this);
+        b10 = new SinglePlayerApp.XOButton(this);
+        b11 = new SinglePlayerApp.XOButton(this);
+        b12 = new SinglePlayerApp.XOButton(this);
+        b20 = new SinglePlayerApp.XOButton(this);
+        b21 = new SinglePlayerApp.XOButton(this);
+        b22 = new SinglePlayerApp.XOButton(this);
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btnPlayAgain = new javax.swing.JButton();
@@ -308,15 +308,15 @@ public class TTT extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private app.XOButton b00;
-    private app.XOButton b01;
-    private app.XOButton b02;
-    private app.XOButton b10;
-    private app.XOButton b11;
-    private app.XOButton b12;
-    private app.XOButton b20;
-    private app.XOButton b21;
-    private app.XOButton b22;
+    private SinglePlayerApp.XOButton b00;
+    private SinglePlayerApp.XOButton b01;
+    private SinglePlayerApp.XOButton b02;
+    private SinglePlayerApp.XOButton b10;
+    private SinglePlayerApp.XOButton b11;
+    private SinglePlayerApp.XOButton b12;
+    private SinglePlayerApp.XOButton b20;
+    private SinglePlayerApp.XOButton b21;
+    private SinglePlayerApp.XOButton b22;
     private javax.swing.JButton btnPlayAgain;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;

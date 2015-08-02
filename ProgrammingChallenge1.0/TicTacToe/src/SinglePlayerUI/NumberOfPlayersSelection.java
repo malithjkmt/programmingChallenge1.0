@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui;
+package SinglePlayerUI;
+
+import multiPlayerUI.ServerOrClient;
 
 /**
  *
@@ -90,7 +92,9 @@ public class NumberOfPlayersSelection extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        ServerOrClient soc = new ServerOrClient(this, rootPaneCheckingEnabled);
+        this.setVisible(false);
+        soc.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

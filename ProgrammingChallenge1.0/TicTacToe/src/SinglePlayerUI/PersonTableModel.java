@@ -1,4 +1,4 @@
-package ui;
+package SinglePlayerUI;
 
 import db.Person;
 import java.util.List;

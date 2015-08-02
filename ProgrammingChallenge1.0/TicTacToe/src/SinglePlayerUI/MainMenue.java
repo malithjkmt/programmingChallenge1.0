@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui;
+package SinglePlayerUI;
 
-import app.TTT;
+import SinglePlayerApp.TTT;
 import com.jtattoo.plaf.noire.NoireLookAndFeel;
 
 /**
