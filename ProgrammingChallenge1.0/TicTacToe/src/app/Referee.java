@@ -113,7 +113,8 @@ public class Referee implements Runnable {
     public synchronized boolean CheckGameStatus(State state, char pcCard) {
 
         if (win(state, pcCard)) {
-
+            game.getTtt().getConsole().setPCWins(game.getTtt().getConsole().getPCWins()+1);
+            game.getTtt().displayPCScore();
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     JOptionPane.showMessageDialog(game.getTtt(), "Pc Won!");
@@ -125,6 +126,8 @@ public class Referee implements Runnable {
             return true;
 
         } else if (win(state, SmartPc.opponentSymbol(pcCard))) {
+            game.getTtt().getConsole().setPlayer1Wins(game.getTtt().getConsole().getPlayer1Wins()+1);
+            game.getTtt().displayPlayer1Score();
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     JOptionPane.showMessageDialog(game.getTtt(), "You Won!!!!");
@@ -135,6 +138,8 @@ public class Referee implements Runnable {
             game.setGameOver(true);
             return true;
         } else if (boardFull(state)) {
+            game.getTtt().getConsole().setDraw(game.getTtt().getConsole().getDraw()+1);
+            game.getTtt().displayDraw();
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     JOptionPane.showMessageDialog(game.getTtt(), "Game is a draw!!!!");

@@ -23,7 +23,8 @@ public class XOButton extends JButton implements ActionListener {
      0:O
      1:X
      */
-
+    /* public XOButton() {
+     }*/
     public XOButton(TTT ttt) {
         X = new ImageIcon(this.getClass().getResource("/pic/X.png"));
         O = new ImageIcon(this.getClass().getResource("/pic/O.png"));

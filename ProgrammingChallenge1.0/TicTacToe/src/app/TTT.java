@@ -7,6 +7,7 @@ package app;
 
 import java.util.HashMap;
 import java.util.Map;
+import ui.MainMenue;
 
 /**
  *
@@ -17,17 +18,33 @@ public class TTT extends javax.swing.JFrame {
     volatile private int selectedCellRow;
     volatile private int selectedCellCol;
     Console console;
-   
+
     /**
      * Creates new form TTT
      */
-    public TTT(Console console ) {
-      this.console = console;
+    public TTT(Console console) {
+        this.console = console;
         initComponents();
+        
+        lblplayer1Wins.setText(console.getPlayerName()+" Wins");
+        lblPlayer2Wins.setText("PC Wins");
+        
+        lblPlayer1WinsDisplay.setText(Integer.toString(console.getPlayer1Wins()));
+        lblPlayer2WinsDisplay.setText(Integer.toString(console.getPCWins()));
+        lblDrawDisplay.setText(Integer.toString(console.getDraw()));
+        
         setLocationRelativeTo(null);  // *** this will center the app ***
-       
-    }
 
+    }
+    public void displayPlayer1Score(){
+        lblPlayer1WinsDisplay.setText(Integer.toString(console.getPlayer1Wins()));
+    }
+    public void displayPCScore(){
+        lblPlayer2WinsDisplay.setText(Integer.toString(console.getPCWins()));
+    }
+    public void displayDraw(){
+         lblDrawDisplay.setText(Integer.toString(console.getDraw()));
+    }
     public Console getConsole() {
         return console;
     }
@@ -88,10 +105,12 @@ public class TTT extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnPlayAgain = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        lblPlayer2 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        lblPlayer1 = new javax.swing.JLabel();
+        lblPlayer1WinsDisplay = new javax.swing.JLabel();
+        lblDrawDisplay = new javax.swing.JLabel();
+        lblplayer1Wins = new javax.swing.JLabel();
+        lblPlayer2Wins = new javax.swing.JLabel();
+        lblPlayer2WinsDisplay = new javax.swing.JLabel();
+        lblDraw = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TicTacToe 2015");
@@ -166,6 +185,11 @@ public class TTT extends javax.swing.JFrame {
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jButton1.setText("Main Menu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
 
         btnPlayAgain.setText("Play Again");
@@ -176,26 +200,41 @@ public class TTT extends javax.swing.JFrame {
         });
         jPanel2.add(btnPlayAgain);
 
-        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
+        lblPlayer1WinsDisplay.setText("jLabel3");
 
-        jLabel1.setText("Player 1 Winings:");
-        jPanel3.add(jLabel1);
+        lblDrawDisplay.setText("jLabel4");
 
-        lblPlayer2.setText("jLabel3");
-        jPanel3.add(lblPlayer2);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(lblPlayer1WinsDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addComponent(lblDrawDisplay)
+                .addGap(56, 56, 56))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblPlayer1WinsDisplay)
+                .addComponent(lblDrawDisplay))
+        );
 
-        jLabel2.setText("Player 2 Wininigs:");
-        jPanel3.add(jLabel2);
+        lblplayer1Wins.setText("Player 1 Wins");
 
-        lblPlayer1.setText("jLabel3");
-        jPanel3.add(lblPlayer1);
+        lblPlayer2Wins.setText("Player 2 Wins");
+
+        lblPlayer2WinsDisplay.setText("jLabel3");
+
+        lblDraw.setText("Draw");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -204,8 +243,19 @@ public class TTT extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPlayer2WinsDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblplayer1Wins, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69)
+                                .addComponent(lblDraw)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPlayer2Wins)))
+                        .addGap(21, 21, 21)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,8 +264,15 @@ public class TTT extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblplayer1Wins)
+                    .addComponent(lblPlayer2Wins)
+                    .addComponent(lblDraw))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPlayer2WinsDisplay))
                 .addContainerGap())
         );
 
@@ -223,9 +280,15 @@ public class TTT extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPlayAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayAgainActionPerformed
-       // console.createNewGame();
         this.dispose();
+        console.createNewGame();
+
     }//GEN-LAST:event_btnPlayAgainActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        new MainMenue().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public synchronized int getSelectedCellRow() {
         return selectedCellRow;
@@ -235,7 +298,7 @@ public class TTT extends javax.swing.JFrame {
         this.selectedCellRow = selectedCellRow;
     }
 
-    public synchronized  int getSelectedCellCol() {
+    public synchronized int getSelectedCellCol() {
         return selectedCellCol;
     }
 
@@ -257,12 +320,14 @@ public class TTT extends javax.swing.JFrame {
     private javax.swing.JButton btnPlayAgain;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lblPlayer1;
-    private javax.swing.JLabel lblPlayer2;
+    private javax.swing.JLabel lblDraw;
+    private javax.swing.JLabel lblDrawDisplay;
+    private javax.swing.JLabel lblPlayer1WinsDisplay;
+    private javax.swing.JLabel lblPlayer2Wins;
+    private javax.swing.JLabel lblPlayer2WinsDisplay;
+    private javax.swing.JLabel lblplayer1Wins;
     // End of variables declaration//GEN-END:variables
 }
