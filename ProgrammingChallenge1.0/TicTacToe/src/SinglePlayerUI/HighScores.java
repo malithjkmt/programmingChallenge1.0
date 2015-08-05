@@ -8,13 +8,13 @@ package SinglePlayerUI;
 import db.DbConnector;
 import db.Person;
 import db.PersonDAC;
-import db.Test;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,12 +24,38 @@ public class HighScores extends javax.swing.JDialog {
 
     DbConnector dbConnector;
     PersonDAC personDAC;
+    JTextField jta;
 
     /**
      * Creates new form HighScores
      */
-    public HighScores(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public HighScores() {
+       
+        initComponents();
+        try {
+            dbConnector = new DbConnector();
+            personDAC = new PersonDAC(dbConnector.getMyConn());
+            List<Person> person = personDAC.getAllPerson();
+
+            // create the model and update the "table"
+            PersonTableModel model = new PersonTableModel(person);
+            table.setModel(model);
+
+        } catch (IOException ex) {
+            Logger.getLogger(HighScores.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(HighScores.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(HighScores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        setLocationRelativeTo(null);  // *** this will center the app ***
+        table.getColumnModel().getColumn(0).setPreferredWidth(100);
+        
+        btnLoadPlayer.setVisible(false);
+    }
+    
+    public HighScores(JTextField jta) {
+        this.jta = jta;
         initComponents();
         try {
             dbConnector = new DbConnector();
@@ -50,6 +76,7 @@ public class HighScores extends javax.swing.JDialog {
         setLocationRelativeTo(null);  // *** this will center the app ***
         table.getColumnModel().getColumn(0).setPreferredWidth(100);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,24 +88,15 @@ public class HighScores extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnDelete = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnLoadPlayer = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
+        btnDelete = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        btnDelete.setText("Delete Player");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+        btnLoadPlayer.setText("Load Player");
+        btnLoadPlayer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Start Game");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnLoadPlayerActionPerformed(evt);
             }
         });
 
@@ -87,24 +105,21 @@ public class HighScores extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(644, Short.MAX_VALUE)
-                .addComponent(btnDelete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLoadPlayer)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDelete)
-                    .addComponent(jButton2)))
+                .addComponent(btnLoadPlayer))
         );
 
         jScrollPane1.setAutoscrolls(true);
         jScrollPane1.setFont(new java.awt.Font("Kristen ITC", 1, 12)); // NOI18N
 
+        table.setAutoCreateRowSorter(true);
         table.setFont(new java.awt.Font("Kristen ITC", 1, 10)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -142,15 +157,27 @@ public class HighScores extends javax.swing.JDialog {
             table.getColumnModel().getColumn(7).setResizable(false);
         }
 
+        btnDelete.setText("Delete Player");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +185,9 @@ public class HighScores extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(10, 10, 10))
         );
 
@@ -195,7 +224,7 @@ public class HighScores extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnLoadPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadPlayerActionPerformed
         //get selected row
         int row = table.getSelectedRow();
 
@@ -205,14 +234,13 @@ public class HighScores extends javax.swing.JDialog {
             return;
         }
         // get the current Person
-            Person tempPerson = (Person) table.getValueAt(row, -1);
+        Person tempPerson = (Person) table.getValueAt(row, -1);
         String pName = tempPerson.getName();
-        
-        System.out.println("4"+pName+"4");
+
         this.dispose();
-        new GameMenu(pName).setVisible(true);
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+        jta.setText(pName);
+
+    }//GEN-LAST:event_btnLoadPlayerActionPerformed
 
     /**
      * method will refresh the GUI showing the latest update on the table
@@ -235,48 +263,10 @@ public class HighScores extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HighScores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HighScores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HighScores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HighScores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                HighScores dialog = new HighScores(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnLoadPlayer;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;

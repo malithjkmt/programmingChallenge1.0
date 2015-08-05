@@ -6,7 +6,7 @@ package SinglePlayerApp;
  */
 public class State {
 
-    Character[][] s = new Character[3][3];
+    public Character[][] s = new Character[3][3];
 
     //get a coppy of the entire current board
     public State(Character[][] board) {

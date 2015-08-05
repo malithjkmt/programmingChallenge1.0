@@ -59,64 +59,54 @@ public class GameMenu extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         rbtnEasy = new javax.swing.JRadioButton();
         rbtnHard = new javax.swing.JRadioButton();
         btnStart = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnLoadPlayer = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Player Name");
+        txtName.setFont(new java.awt.Font("Kristen ITC", 1, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipady = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(50, 110, 0, 0);
-        getContentPane().add(jLabel1, gridBagConstraints);
-
-        txtName.setFont(new java.awt.Font("Kristen ITC", 1, 14)); // NOI18N
-        txtName.setText(" ");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.ipadx = 209;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 264;
         gridBagConstraints.ipady = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 60, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(70, 30, 0, 0);
         getContentPane().add(txtName, gridBagConstraints);
 
-        rbtnEasy.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
+        rbtnEasy.setFont(new java.awt.Font("Kristen ITC", 1, 16)); // NOI18N
         rbtnEasy.setForeground(new java.awt.Color(255, 255, 255));
         rbtnEasy.setText("Easy Mode");
         rbtnEasy.setContentAreaFilled(false);
+        rbtnEasy.setFocusPainted(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 19;
+        gridBagConstraints.ipadx = 31;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(37, 20, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 20, 0, 0);
         getContentPane().add(rbtnEasy, gridBagConstraints);
 
-        rbtnHard.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
+        rbtnHard.setFont(new java.awt.Font("Kristen ITC", 1, 16)); // NOI18N
         rbtnHard.setForeground(new java.awt.Color(255, 255, 255));
         rbtnHard.setText("Hard Mode");
         rbtnHard.setContentAreaFilled(false);
+        rbtnHard.setFocusPainted(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(37, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 0);
         getContentPane().add(rbtnHard, gridBagConstraints);
 
         btnStart.setBackground(new java.awt.Color(0, 0, 0));
@@ -125,19 +115,20 @@ public class GameMenu extends javax.swing.JFrame {
         btnStart.setText("start");
         btnStart.setBorder(null);
         btnStart.setContentAreaFilled(false);
+        btnStart.setFocusPainted(false);
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStartActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 7;
         gridBagConstraints.ipadx = 53;
         gridBagConstraints.ipady = -9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(87, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(89, 0, 0, 0);
         getContentPane().add(btnStart, gridBagConstraints);
 
         jButton1.setFont(new java.awt.Font("Kristen ITC", 1, 30)); // NOI18N
@@ -145,32 +136,82 @@ public class GameMenu extends javax.swing.JFrame {
         jButton1.setText("Back");
         jButton1.setBorder(null);
         jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipady = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(87, 30, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(89, 30, 0, 0);
         getContentPane().add(jButton1, gridBagConstraints);
+
+        btnLoadPlayer.setFont(new java.awt.Font("Kristen ITC", 1, 17)); // NOI18N
+        btnLoadPlayer.setForeground(new java.awt.Color(255, 255, 255));
+        btnLoadPlayer.setText("Load Player");
+        btnLoadPlayer.setBorder(null);
+        btnLoadPlayer.setContentAreaFilled(false);
+        btnLoadPlayer.setFocusPainted(false);
+        btnLoadPlayer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadPlayerActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 26;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(27, 0, 0, 0);
+        getContentPane().add(btnLoadPlayer, gridBagConstraints);
+
+        jButton3.setFont(new java.awt.Font("Kristen ITC", 1, 17)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Add New Player");
+        jButton3.setBorder(null);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setFocusPainted(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 19;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(37, 10, 0, 0);
+        getContentPane().add(jButton3, gridBagConstraints);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/BlackWodBig.jpg"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridwidth = 11;
         gridBagConstraints.gridheight = 6;
-        gridBagConstraints.ipadx = 2;
-        gridBagConstraints.ipady = -50;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 1, 0);
         getContentPane().add(jLabel2, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        String playerName = txtName.getText();
+        String playerName = txtName.getText().trim();
+        
+        if(playerName.equals("")){
+            JOptionPane.showMessageDialog(this, "Please Enter a new user or load a previous user", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
 
         Character difficulty;
         if (rbtnEasy.isSelected()) {
@@ -193,13 +234,31 @@ public class GameMenu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "This User name is already taken, please chose a different name", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
             txtName.setText(null);
-            Logger.getLogger(GameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(GameMenu.class.getName()).log(Level.SEVERE, null, ex);
+            return;
         }
         this.dispose();
 
         Console console = new Console(difficulty, playerName);
 
     }//GEN-LAST:event_btnStartActionPerformed
+
+    private void btnLoadPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadPlayerActionPerformed
+        new HighScores(txtName).setVisible(true);
+        loading  = true;
+        txtName.setEnabled(false);
+    }//GEN-LAST:event_btnLoadPlayerActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        loading = false;
+        txtName.setText("");
+        txtName.setEnabled(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+        new NumberOfPlayersSelection().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,10 +296,11 @@ public class GameMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLoadPlayer;
     private javax.swing.JButton btnStart;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton rbtnEasy;
     private javax.swing.JRadioButton rbtnHard;

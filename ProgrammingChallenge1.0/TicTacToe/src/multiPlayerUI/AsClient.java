@@ -5,6 +5,7 @@
  */
 package multiPlayerUI;
 
+import SinglePlayerUI.MainMenue;
 import javax.swing.JOptionPane;
 import multiPlayerApp.Game;
 
@@ -36,62 +37,81 @@ public class AsClient extends javax.swing.JDialog {
         ipTxt = new javax.swing.JTextField();
         connectBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(336, 430));
         setResizable(false);
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        getContentPane().setLayout(null);
 
+        ipTxt.setFont(new java.awt.Font("Kristen ITC", 1, 14)); // NOI18N
+        ipTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         ipTxt.setText("192.168.137.1");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 114;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(100, 40, 0, 0);
-        getContentPane().add(ipTxt, gridBagConstraints);
+        getContentPane().add(ipTxt);
+        ipTxt.setBounds(33, 219, 140, 30);
 
-        connectBtn.setFont(new java.awt.Font("Kristen ITC", 3, 18)); // NOI18N
-        connectBtn.setForeground(new java.awt.Color(204, 0, 51));
+        connectBtn.setFont(new java.awt.Font("Kristen ITC", 3, 20)); // NOI18N
+        connectBtn.setForeground(new java.awt.Color(255, 255, 255));
         connectBtn.setText("Connect");
+        connectBtn.setBorder(null);
         connectBtn.setContentAreaFilled(false);
+        connectBtn.setFocusPainted(false);
         connectBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 connectBtnActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 3;
-        gridBagConstraints.ipady = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(90, 10, 0, 0);
-        getContentPane().add(connectBtn, gridBagConstraints);
+        getContentPane().add(connectBtn);
+        connectBtn.setBounds(180, 210, 140, 40);
 
-        jLabel2.setFont(new java.awt.Font("Kristen ITC", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("<html>Enter the Ip address of the <br>computer you want to connect");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 234;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(70, 20, 0, 0);
-        getContentPane().add(jLabel2, gridBagConstraints);
+        jLabel2.setText("Enter the Ip address of the");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(30, 100, 290, 20);
+
+        jButton3.setFont(new java.awt.Font("Kristen ITC", 1, 20)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Back");
+        jButton3.setBorder(null);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setFocusPainted(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(20, 340, 110, 40);
+
+        jButton1.setFont(new java.awt.Font("Kristen ITC", 1, 20)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Main Menu");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(170, 330, 140, 50);
+
+        jLabel4.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("computer you want to connect");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(20, 130, 310, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/BlackWodBig.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.gridheight = 4;
-        gridBagConstraints.ipadx = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(jLabel1, gridBagConstraints);
+        jLabel1.setPreferredSize(new java.awt.Dimension(338, 550));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 340, 450);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -116,6 +136,16 @@ public class AsClient extends javax.swing.JDialog {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_connectBtnActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        dispose();
+        new ServerOrClient(null, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+        new MainMenue().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,7 +195,10 @@ public class AsClient extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton connectBtn;
     private javax.swing.JTextField ipTxt;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

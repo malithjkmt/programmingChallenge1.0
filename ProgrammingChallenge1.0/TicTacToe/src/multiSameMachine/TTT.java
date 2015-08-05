@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SinglePlayerApp;
-
+package multiSameMachine;
 
 import SinglePlayerUI.MainMenue;
 import java.util.HashMap;
@@ -29,11 +28,11 @@ public class TTT extends javax.swing.JFrame {
         this.console = console;
         setLocationRelativeTo(null);  // *** this will center the app ***
 
-        lblPlayer1.setText(console.getPlayerName());
-        lblPlayer2.setText("PC");
+        lblPlayer1.setText(console.getPlayer1Name());
+        lblPlayer2.setText(console.getPlayer2Name());
 
         lblPlayer1SB.setText(Integer.toString(console.getPlayer1Wins()));
-        lblPlayer2SB.setText(Integer.toString(console.getPCWins()));
+        lblPlayer2SB.setText(Integer.toString(console.getPlayer2Wins()));
         lblDraw.setText(Integer.toString(console.getDraw()));
 
     }
@@ -42,7 +41,7 @@ public class TTT extends javax.swing.JFrame {
         lblPlayer1SB.setText(Integer.toString(console.getPlayer1Wins()));
     }
     public void displayPlayer2Score(){
-        lblPlayer2SB.setText(Integer.toString(console.getPCWins()));
+        lblPlayer2SB.setText(Integer.toString(console.getPlayer2Wins()));
     }
     public void displayDraw(){
          lblDraw.setText(Integer.toString(console.getDraw()));
@@ -126,15 +125,15 @@ public class TTT extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        b00 = new SinglePlayerApp.XOButton(this);
-        b01 = new SinglePlayerApp.XOButton(this);
-        b02 = new SinglePlayerApp.XOButton(this);
-        b12 = new SinglePlayerApp.XOButton(this);
-        b11 = new SinglePlayerApp.XOButton(this);
-        b10 = new SinglePlayerApp.XOButton(this);
-        b20 = new SinglePlayerApp.XOButton(this);
-        b21 = new SinglePlayerApp.XOButton(this);
-        b22 = new SinglePlayerApp.XOButton(this);
+        b00 = new multiSameMachine.XOButton(this);
+        b01 = new multiSameMachine.XOButton(this);
+        b02 = new multiSameMachine.XOButton(this);
+        b12 = new multiSameMachine.XOButton(this);
+        b11 = new multiSameMachine.XOButton(this);
+        b10 = new multiSameMachine.XOButton(this);
+        b20 = new multiSameMachine.XOButton(this);
+        b21 = new multiSameMachine.XOButton(this);
+        b22 = new multiSameMachine.XOButton(this);
         jPanel3 = new javax.swing.JPanel();
         lblPlayer1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -513,15 +512,15 @@ public class TTT extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame MultiPlayerData;
     private javax.swing.JFrame NewGame;
-    private SinglePlayerApp.XOButton b00;
-    private SinglePlayerApp.XOButton b01;
-    private SinglePlayerApp.XOButton b02;
-    private SinglePlayerApp.XOButton b10;
-    private SinglePlayerApp.XOButton b11;
-    private SinglePlayerApp.XOButton b12;
-    private SinglePlayerApp.XOButton b20;
-    private SinglePlayerApp.XOButton b21;
-    private SinglePlayerApp.XOButton b22;
+    private multiSameMachine.XOButton b00;
+    private multiSameMachine.XOButton b01;
+    private multiSameMachine.XOButton b02;
+    private multiSameMachine.XOButton b10;
+    private multiSameMachine.XOButton b11;
+    private multiSameMachine.XOButton b12;
+    private multiSameMachine.XOButton b20;
+    private multiSameMachine.XOButton b21;
+    private multiSameMachine.XOButton b22;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JFrame gameLevel;
     private javax.swing.JButton jButton3;

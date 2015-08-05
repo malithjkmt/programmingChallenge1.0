@@ -1,8 +1,9 @@
 /*
  Thread to see whether some one have won
  */
-package SinglePlayerApp;
+package multiSameMachine;
 
+import SinglePlayerApp.State;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,55 +16,63 @@ import java.sql.SQLException;
 
 public class Referee implements Runnable {
 
-    Player human;
-    Pc pc;
+    Player player1;
+    Player player2;
     private Game game;
-    private Object lock;
 
-    public Referee(Game game, Player human, Pc pc, Object lock) {
+    Object lock1;
+    Object lock2;
+    
+    public Referee(Game game, Player player1, Player player2,Object lock1,Object lock2) {
         this.game = game;
-        this.pc = pc;
-        this.human = human;
-        this.lock = lock;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.lock1 =lock1;
+        this.lock2 = lock2;
 
     }
-
-    
 
     public void reffer() {
         boolean over = false;
 
         while (!game.isGameOver()) {
 
-            human.play();
+            player1.play();
+            
+             try {
+                synchronized (lock1) {
 
-            try {
-                synchronized (lock) {
-
-                    lock.wait();
+                    lock1.wait();
                 }
             } catch (InterruptedException e) {
-                System.out.println("INterrupted!!!!");
+                System.out.println("INterrupted!!!! lock 1");
             }
 
-            over = CheckGameStatus(new State(game.getBoard()), pc.getxORo());
+
+            over = CheckGameStatus(new State(game.getBoard()), player2.getxORo());
 
             if (over) {
                 game.getTtt().closeGame();
                 break;
             }
 
-            pc.play();
-            System.out.println("pc played!!!");
+            player2.play();
+               try {
+                synchronized (lock2) {
 
-            game.printBoard();
-            over = CheckGameStatus(new State(game.getBoard()), pc.getxORo());
+                    lock2.wait();
+                }
+            } catch (InterruptedException e) {
+                System.out.println("INterrupted!!!! lock 2");
+            }
+
+            over = CheckGameStatus(new State(game.getBoard()), player2.getxORo());
 
             if (over) {
                 game.getTtt().closeGame();
                 break;
             }
-            Console.freeToPlay = false; // lock the board until human plays
+            Console.freeToPlay = false; // lock the board until player2 plays
 
         }
     }
@@ -112,50 +121,42 @@ public class Referee implements Runnable {
     }
 
     //check the last play, if it's an end game finish the game and display the result
-    public synchronized boolean CheckGameStatus(State state, char pcCard) {
+    public boolean CheckGameStatus(State state, char pcCard) {
 
         if (win(state, pcCard)) {
-            game.getTtt().getConsole().setPCWins(game.getTtt().getConsole().getPCWins()+1);
-            game.getTtt().displayPlayer2Score();
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    JOptionPane.showMessageDialog(game.getTtt(), "Pc Won!");
-                }
-            });
+            game.getTtt().getConsole().setPlayer2Wins(game.getTtt().getConsole().getPlayer2Wins()+1);
+             game.getTtt().displayPlayer2Score();
 
-             updatePlayerDB(game.getPlayerName(), game.getDifficulty(), 'l');
+            JOptionPane.showMessageDialog(game.getTtt(), game.getTtt().getConsole().getPlayer2Name()+" Won!");
+
+             updatePlayerDB(game.getPlayer2Name(), 'l');
             game.setGameOver(true);
             return true;
 
-        } else if (win(state, SmartPc.opponentSymbol(pcCard))) {
-            game.getTtt().getConsole().setPlayer1Wins(game.getTtt().getConsole().getPlayer1Wins()+1);
+        } else if (win(state, opponentSymbol(pcCard))) {
+            game.getTtt().getConsole().setPlayer1Wins(game.getTtt().getConsole().getPlayer1Wins() + 1);
             game.getTtt().displayPlayer1Score();
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    JOptionPane.showMessageDialog(game.getTtt(), "You Won!!!!");
-                }
-            });
 
-            updatePlayerDB(game.getPlayerName(), game.getDifficulty(), 'w');
+            JOptionPane.showMessageDialog(game.getTtt(), game.getTtt().getConsole().getPlayer1Name()+" Won!!!!");
+
+              updatePlayerDB(game.getPlayer1Name(), 'w');
             game.setGameOver(true);
             return true;
         } else if (boardFull(state)) {
             game.getTtt().getConsole().setDraw(game.getTtt().getConsole().getDraw()+1);
-            game.getTtt().displayDraw();
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    JOptionPane.showMessageDialog(game.getTtt(), "Game is a draw!!!!");
-                }
-            });
+             game.getTtt().displayDraw();
 
-             updatePlayerDB(game.getPlayerName(), game.getDifficulty(), 'd');
+            JOptionPane.showMessageDialog(game.getTtt(), "Game is a draw!!!!");
+
+             updatePlayerDB(game.getPlayer1Name(), 'd');
+             updatePlayerDB(game.getPlayer2Name(), 'd');
             game.setGameOver(true);
             return true;
         }
         return false;
     }
 
-    public void updatePlayerDB(String PlayerName, Character difficulty, Character winningStatus) {
+    public void updatePlayerDB(String PlayerName, Character winningStatus) {
         try {
             DbConnector dbConnector = new DbConnector();
             PersonDAC personDAC = new PersonDAC(dbConnector.getMyConn());
@@ -171,27 +172,17 @@ public class Referee implements Runnable {
             int multidraws = player.getMultidraws();
             int multiWins = player.getMultiWins();
 
-            if (difficulty == 'e') {
+           
                 if (winningStatus == 'w') {
-                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins + 1, singleEasyDraws, singleHardWins, singleHardDraws, multiTotalPlays, multidraws, multiWins));
+                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays , singleEasyWins , singleEasyDraws, singleHardWins, singleHardDraws, multiTotalPlays+1, multidraws, multiWins+1));
                 }
                 if (winningStatus == 'd') {
-                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins, singleEasyDraws + 1, singleHardWins, singleHardDraws, multiTotalPlays, multidraws, multiWins));
+                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays , singleEasyWins, singleEasyDraws , singleHardWins, singleHardDraws, multiTotalPlays+1, multidraws+1, multiWins));
                 }
                 if (winningStatus == 'l') {
-                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins, singleEasyDraws, singleHardWins, singleHardDraws, multiTotalPlays, multidraws, multiWins));
+                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays , singleEasyWins, singleEasyDraws, singleHardWins, singleHardDraws, multiTotalPlays+1, multidraws, multiWins));
                 }
-            } else {
-                if (winningStatus == 'w') {
-                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins, singleEasyDraws, singleHardWins + 1, singleHardDraws, multiTotalPlays, multidraws, multiWins));
-                }
-                if (winningStatus == 'd') {
-                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins, singleEasyDraws, singleHardWins, singleHardDraws + 1, multiTotalPlays, multidraws, multiWins));
-                }
-                if (winningStatus == 'l') {
-                    personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins, singleEasyDraws, singleHardWins, singleHardDraws, multiTotalPlays, multidraws, multiWins));
-                }
-            }
+           
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Referee.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
@@ -203,6 +194,18 @@ public class Referee implements Runnable {
     @Override
     public void run() {
         reffer();
+    }
+
+    // get the symbol of the human player
+
+    public static char opponentSymbol(char pcSymbol) {
+        char t;
+        if (Objects.equals(pcSymbol, 'x')) {
+            t = 'o';
+        } else {
+            t = 'x';
+        }
+        return t;
     }
 
 }
