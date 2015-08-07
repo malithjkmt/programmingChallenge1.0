@@ -1,0 +1,206 @@
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:117) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:145) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:298) - Player has selected hard mode
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:306) - Player has selected O symbo;
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:312) - Application is trying to create database connection
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:117) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:145) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:298) - Player has selected hard mode
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:306) - Player has selected O symbo;
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:312) - Application is trying to create database connection
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-9] (Referee.java:164) - Pc won the game
+2015-08-07  INFO [Thread-9] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:146) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:343) - Player is loaded with name:
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:296) - Player has selected easy mode
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:304) - Player has selected X symbol
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:313) - Application is trying to create database connection
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-15] (Referee.java:180) - anuradha won the game
+2015-08-07  INFO [Thread-15] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:146) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:356) - Back button pressed
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:359) - GameMenu ui is closed and NumberOfPlayerSelection ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:138) - multiplayer mode is selectd
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:102) - player selected to play multiplayer in the same machine
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:104) - Type of multiplayer ui is disposed
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:106) - GameMenueMulti ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenueMulti.java:206) - javax.swing.JTextField[,170,80,150x30,invalid,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=com.jtattoo.plaf.BaseBorders$TextFieldBorder@19b4ccf5,flags=296,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=255,g=255,b=255],disabledTextColor=javax.swing.plaf.ColorUIResource[r=164,g=164,b=164],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=javax.swing.plaf.ColorUIResource[r=255,g=220,b=120],selectionColor=javax.swing.plaf.ColorUIResource[r=0,g=0,b=0],columns=0,columnWidth=0,command=,horizontalAlignment=LEADING] and javax.swing.JTextField[,170,220,150x30,invalid,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=com.jtattoo.plaf.BaseBorders$TextFieldBorder@19b4ccf5,flags=296,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=255,g=255,b=255],disabledTextColor=javax.swing.plaf.ColorUIResource[r=164,g=164,b=164],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=javax.swing.plaf.ColorUIResource[r=255,g=220,b=120],selectionColor=javax.swing.plaf.ColorUIResource[r=0,g=0,b=0],columns=0,columnWidth=0,command=,horizontalAlignment=LEADING] start the game
+2015-08-07  INFO [Thread-32] (Referee.java:148) - asdf won the game
+2015-08-07  INFO [Thread-32] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-47] (Referee.java:136) - asfdf won the game
+2015-08-07  INFO [Thread-47] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:138) - multiplayer mode is selectd
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:111) - player selected to play multiplayer over a network
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:114) - TypeOfMultiplayer ui is closed
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:107) - Player selected to connect to network as Client
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:107) - Player selected to connect to network as Client
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:111) - ServerOrClient ui is closed AsClient ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:111) - ServerOrClient ui is closed AsClient ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:116) - ServerOrClient ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:110) - high score table is opened
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:146) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:299) - Player has selected hard mode
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:304) - Player has selected X symbol
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:313) - Application is trying to create database connection
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-9] (Referee.java:164) - Pc won the game
+2015-08-07  INFO [Thread-9] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-13] (Referee.java:164) - Pc won the game
+2015-08-07  INFO [Thread-13] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:146) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:296) - Player has selected easy mode
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:304) - Player has selected X symbol
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:313) - Application is trying to create database connection
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-27] (Referee.java:180) - zfbzfbz won the game
+2015-08-07  INFO [Thread-27] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:138) - multiplayer mode is selectd
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:111) - player selected to play multiplayer over a network
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:114) - TypeOfMultiplayer ui is closed
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:117) - Player selected to connect to the network as the server
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:138) - multiplayer mode is selectd
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:111) - player selected to play multiplayer over a network
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:114) - TypeOfMultiplayer ui is closed
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:117) - Player selected to connect to the network as the server
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:119) - Server is waiting for connection
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:123) - Server got the connection
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:125) - ServerOrClient ui is closed and Ttt ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:116) - ServerOrClient ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (Referee.java:76) - Player won the game
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:138) - multiplayer mode is selectd
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:111) - player selected to play multiplayer over a network
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:114) - TypeOfMultiplayer ui is closed
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:117) - Player selected to connect to the network as the server
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:119) - Server is waiting for connection
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:138) - multiplayer mode is selectd
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:102) - player selected to play multiplayer in the same machine
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:104) - Type of multiplayer ui is disposed
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:106) - GameMenueMulti ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:111) - player selected to play multiplayer over a network
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:114) - TypeOfMultiplayer ui is closed
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:107) - Player selected to connect to network as Client
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:117) - Player selected to connect to the network as the server
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:119) - Server is waiting for connection
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:123) - Server got the connection
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:125) - ServerOrClient ui is closed and Ttt ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:111) - ServerOrClient ui is closed AsClient ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:116) - ServerOrClient ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (Referee.java:76) - Player won the game
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:146) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:299) - Player has selected hard mode
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:304) - Player has selected X symbol
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:313) - Application is trying to create database connection
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-9] (Referee.java:194) - Game is a draw
+2015-08-07  INFO [Thread-9] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-12] (Referee.java:164) - Pc won the game
+2015-08-07  INFO [Thread-12] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-17] (Referee.java:194) - Game is a draw
+2015-08-07  INFO [Thread-17] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:146) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:299) - Player has selected hard mode
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:304) - Player has selected X symbol
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:313) - Application is trying to create database connection
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-26] (Referee.java:194) - Game is a draw
+2015-08-07  INFO [Thread-26] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-29] (Referee.java:164) - Pc won the game
+2015-08-07  INFO [Thread-29] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:110) - high score table is opened
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:146) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:296) - Player has selected easy mode
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:304) - Player has selected X symbol
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:313) - Application is trying to create database connection
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-44] (Referee.java:180) - Keeth won the game
+2015-08-07  INFO [Thread-44] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-49] (Referee.java:180) - Keeth won the game
+2015-08-07  INFO [Thread-49] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:146) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:299) - Player has selected hard mode
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:304) - Player has selected X symbol
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:313) - Application is trying to create database connection
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-60] (Referee.java:164) - Pc won the game
+2015-08-07  INFO [Thread-60] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:110) - high score table is opened
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:110) - high score table is opened
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:146) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:343) - Player is loaded with name:
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:299) - Player has selected hard mode
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:304) - Player has selected X symbol
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:313) - Application is trying to create database connection
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-15] (Referee.java:194) - Game is a draw
+2015-08-07  INFO [Thread-15] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-18] (Referee.java:164) - Pc won the game
+2015-08-07  INFO [Thread-18] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:138) - multiplayer mode is selectd
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:121) - back button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:123) - TypeOfMultiplayer ui is closed
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:125) - NumberOfPlayerSelection ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:146) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:343) - Player is loaded with name:
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:299) - Player has selected hard mode
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:304) - Player has selected X symbol
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:313) - Application is trying to create database connection
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:146) - singleplayer mode is selected
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:296) - Player has selected easy mode
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:304) - Player has selected X symbol
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenu.java:313) - Application is trying to create database connection
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-48] (Referee.java:194) - Game is a draw
+2015-08-07  INFO [Thread-48] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:138) - multiplayer mode is selectd
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:102) - player selected to play multiplayer in the same machine
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:104) - Type of multiplayer ui is disposed
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:106) - GameMenueMulti ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (GameMenueMulti.java:206) - javax.swing.JTextField[,170,80,150x30,invalid,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=com.jtattoo.plaf.BaseBorders$TextFieldBorder@7642ef6d,flags=296,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=255,g=255,b=255],disabledTextColor=javax.swing.plaf.ColorUIResource[r=164,g=164,b=164],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=javax.swing.plaf.ColorUIResource[r=255,g=220,b=120],selectionColor=javax.swing.plaf.ColorUIResource[r=0,g=0,b=0],columns=0,columnWidth=0,command=,horizontalAlignment=LEADING] and javax.swing.JTextField[,170,220,150x30,invalid,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=com.jtattoo.plaf.BaseBorders$TextFieldBorder@7642ef6d,flags=296,maximumSize=,minimumSize=,preferredSize=,caretColor=javax.swing.plaf.ColorUIResource[r=255,g=255,b=255],disabledTextColor=javax.swing.plaf.ColorUIResource[r=164,g=164,b=164],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=javax.swing.plaf.ColorUIResource[r=255,g=220,b=120],selectionColor=javax.swing.plaf.ColorUIResource[r=0,g=0,b=0],columns=0,columnWidth=0,command=,horizontalAlignment=LEADING] start the game
+2015-08-07  INFO [Thread-66] (Referee.java:148) - Malith won the game
+2015-08-07  INFO [Thread-66] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [Thread-81] (Referee.java:136) - kalana won the game
+2015-08-07  INFO [Thread-81] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (DbConnector.java:36) - DB connection succesful to:jdbc:mysql://localhost:3306/ttt?zeroDateTimeBehavior=convertToNull
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:110) - high score table is opened
+2015-08-07  INFO [AWT-EventQueue-0] (MainMenue.java:118) - New Game button is clicked
+2015-08-07  INFO [AWT-EventQueue-0] (NumberOfPlayersSelection.java:138) - multiplayer mode is selectd
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:111) - player selected to play multiplayer over a network
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:114) - TypeOfMultiplayer ui is closed
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:117) - Player selected to connect to the network as the server
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:119) - Server is waiting for connection
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:123) - Server got the connection
+2015-08-07  INFO [AWT-EventQueue-0] (ServerOrClient.java:125) - ServerOrClient ui is closed and Ttt ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (TypeOfMultiPlayer.java:116) - ServerOrClient ui is set visible
+2015-08-07  INFO [AWT-EventQueue-0] (Referee.java:76) - Player won the game

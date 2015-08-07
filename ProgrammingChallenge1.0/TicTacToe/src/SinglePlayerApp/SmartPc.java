@@ -99,7 +99,7 @@ public class SmartPc extends Pc{
 
     }
 
-    // get the symbol of the human player
+    // get the symbol of the oponent player
     public static char opponentSymbol(char pcSymbol) {
         char t;
         if (Objects.equals(pcSymbol, 'x')) {

@@ -6,6 +6,7 @@
 package multiPlayerUI;
 
 import SinglePlayerUI.MainMenue;
+import audio.Sound;
 import javax.swing.JOptionPane;
 import multiPlayerApp.Game;
 
@@ -32,7 +33,6 @@ public class AsClient extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         ipTxt = new javax.swing.JTextField();
         connectBtn = new javax.swing.JButton();
@@ -40,18 +40,19 @@ public class AsClient extends javax.swing.JDialog {
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tic Tac Toe 2015");
         setPreferredSize(new java.awt.Dimension(336, 430));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ipTxt.setFont(new java.awt.Font("Kristen ITC", 1, 14)); // NOI18N
         ipTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         ipTxt.setText("192.168.137.1");
-        getContentPane().add(ipTxt);
-        ipTxt.setBounds(33, 219, 140, 30);
+        getContentPane().add(ipTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 218, 140, 30));
 
         connectBtn.setFont(new java.awt.Font("Kristen ITC", 3, 20)); // NOI18N
         connectBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -64,14 +65,12 @@ public class AsClient extends javax.swing.JDialog {
                 connectBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(connectBtn);
-        connectBtn.setBounds(180, 210, 140, 40);
+        getContentPane().add(connectBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 209, 140, 40));
 
         jLabel2.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Enter the Ip address of the");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 100, 290, 20);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 99, 290, 20));
 
         jButton3.setFont(new java.awt.Font("Kristen ITC", 1, 20)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -84,8 +83,7 @@ public class AsClient extends javax.swing.JDialog {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(20, 340, 110, 40);
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 339, 110, 40));
 
         jButton1.setFont(new java.awt.Font("Kristen ITC", 1, 20)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -99,25 +97,26 @@ public class AsClient extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(170, 330, 140, 50);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 329, 140, 50));
 
         jLabel4.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("computer you want to connect");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 130, 310, 50);
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 129, 310, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/BlackWodBig.jpg"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(338, 550));
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 340, 450);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/Headmini.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 336, 54));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/BlackWodBig.jpg"))); // NOI18N
+        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 338, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void connectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectBtnActionPerformed
-        // TODO add your handling code here:
+        new Thread(new Sound("click.wav")).start();
         Game game = null;
         try {
             game = new Game(ipTxt.getText(), 2);
@@ -138,11 +137,13 @@ public class AsClient extends javax.swing.JDialog {
     }//GEN-LAST:event_connectBtnActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new Thread(new Sound("click.wav")).start();
         dispose();
         new ServerOrClient(null, rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new Thread(new Sound("click.wav")).start();
         dispose();
         new MainMenue().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -197,8 +198,9 @@ public class AsClient extends javax.swing.JDialog {
     private javax.swing.JTextField ipTxt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

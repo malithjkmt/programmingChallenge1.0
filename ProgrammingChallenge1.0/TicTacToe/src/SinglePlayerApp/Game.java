@@ -7,13 +7,13 @@ package SinglePlayerApp;
 public class Game {
 
     private Character board[][] = new Character[3][3]; // this is commom for entire game, entire time....
-    private int activePlayer = 1; // here I give the first move chance to player who gets '1' // haven't used???
-    private Character difficulty;
+    private int activePlayer; // here I give the first move chance to player who gets '1' // haven't used???
+    private char difficulty;
     private boolean gameOver = false;
    
     
-    char humanCard = 'x';// <<<<<<<<< this is a tempory fix...... this should be blank
-    char pcCard = 'o';
+    char humanCard ;// <<<<<<<<< this is a tempory fix...... this should be blank
+    char pcCard;
     TTT ttt;
 
     private Referee ref;
@@ -22,7 +22,7 @@ public class Game {
     private String playerName;
     Thread t;
     private final Object lock = new Object();
-   
+   private boolean firstTurn;
     
     public Game(char humanCard, char pcCard, TTT ttt, char difficulty, String playerName) {
         this.humanCard = humanCard;
@@ -31,6 +31,16 @@ public class Game {
         this.playerName = playerName;
         this.difficulty = difficulty;
         
+        switch(humanCard){
+            case('o'):
+                this.activePlayer = 0;
+                break;
+            
+            case('x'):
+                this.activePlayer = 1;
+        }
+        
+        this.firstTurn = ttt.getConsole().isFirstTurn();
         
         
        

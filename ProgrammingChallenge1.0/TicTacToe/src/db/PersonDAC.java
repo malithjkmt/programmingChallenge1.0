@@ -122,7 +122,7 @@ public class PersonDAC {
         try {
             //prepare statement
             myStmt = myConn.prepareStatement("update person set  SingleTotalPlays=?, SingleEasyWins=?, SingleEasyDraws=?, SingleHardWins=?, SingleHardDraws=?, MultiTotalPlays=?, Multidraws=?, MultiWins=? where Name=?");
-
+           
             //set params
             myStmt.setInt(1, person.getSingleTotalPlays());
             myStmt.setInt(2, person.getSingleEasyWins());
@@ -136,6 +136,7 @@ public class PersonDAC {
 
             // execute the statement
             myStmt.executeUpdate();
+            
         } finally {
             close(myStmt);
         }

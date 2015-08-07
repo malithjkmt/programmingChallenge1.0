@@ -6,7 +6,10 @@
 package multiPlayerUI;
 
 import SinglePlayerUI.NumberOfPlayersSelection;
+import audio.Sound;
+//import java.util.logging.Logger;
 import multiSameMachine.GameMenueMulti;
+import org.apache.log4j.Logger;
 
 
 /**
@@ -18,8 +21,10 @@ public class TypeOfMultiPlayer extends javax.swing.JFrame {
     /**
      * Creates new form TypeOfMultiPlayer
      */
+    Logger loger;
     public TypeOfMultiPlayer() {
         initComponents();
+        loger=Logger.getLogger(TypeOfMultiPlayer.class);
          setLocationRelativeTo(null);  // *** this will center the app ***
     }
 
@@ -31,15 +36,16 @@ public class TypeOfMultiPlayer extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        setTitle("Tic Tac Toe 2015");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -53,14 +59,7 @@ public class TypeOfMultiPlayer extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipady = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(60, 50, 0, 0);
-        getContentPane().add(jButton1, gridBagConstraints);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, 63));
 
         jButton2.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -74,15 +73,7 @@ public class TypeOfMultiPlayer extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 38;
-        gridBagConstraints.ipady = 36;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(67, 50, 0, 0);
-        getContentPane().add(jButton2, gridBagConstraints);
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 227, 69));
 
         jButton3.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,41 +86,43 @@ public class TypeOfMultiPlayer extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 48;
-        gridBagConstraints.ipady = 17;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(131, 110, 0, 0);
-        getContentPane().add(jButton3, gridBagConstraints);
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 110, 50));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/Headmini.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/BlackWodBig.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.gridheight = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(jLabel1, gridBagConstraints);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new Thread(new Sound("click.wav")).start();
+        loger.info("player selected to play multiplayer in the same machine");
         dispose();
+        loger.info("Type of multiplayer ui is disposed");
         new GameMenueMulti().setVisible(true);
+        loger.info("GameMenueMulti ui is set visible");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new Thread(new Sound("click.wav")).start();
+        loger.info("player selected to play multiplayer over a network");
         ServerOrClient soc = new ServerOrClient(this, rootPaneCheckingEnabled);
         this.setVisible(false);
+        loger.info("TypeOfMultiplayer ui is closed");
         soc.setVisible(true);
+        loger.info("ServerOrClient ui is set visible");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new Thread(new Sound("click.wav")).start();
+        loger.info("back button is clicked");
         dispose();
+        loger.info("TypeOfMultiplayer ui is closed");
         new NumberOfPlayersSelection().setVisible(true);
+        loger.info("NumberOfPlayerSelection ui is set visible");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -172,5 +165,6 @@ public class TypeOfMultiPlayer extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

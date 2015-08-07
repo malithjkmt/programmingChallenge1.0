@@ -6,6 +6,7 @@
 package multiSameMachine;
 
 import SinglePlayerUI.MainMenue;
+import audio.Sound;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -499,12 +500,14 @@ public class TTT extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+       new Thread(new Sound("click.wav")).start();
         this.dispose();
         console.createNewGame();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-         this.dispose();
+        new Thread(new Sound("click.wav")).start();
+        this.dispose();
         new MainMenue().setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 

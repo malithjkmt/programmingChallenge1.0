@@ -6,7 +6,11 @@
 package SinglePlayerUI;
 
 import SinglePlayerApp.TTT;
+import audio.Sound;
 import com.jtattoo.plaf.noire.NoireLookAndFeel;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+//import com.sun.istack.internal.logging.Logger;
 
 /**
  *
@@ -17,10 +21,13 @@ public class MainMenue extends javax.swing.JFrame {
     /**
      * Creates new form MainMenue
      */
+    Logger logger;
+    
+    
     public MainMenue() {
         initComponents();
         setLocationRelativeTo(null);  // *** this will center the app ***
-        
+        logger=Logger.getLogger(MainMenue.class);
         
     }
 
@@ -39,6 +46,7 @@ public class MainMenue extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tic Tac Toe 2015");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jButton1.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
@@ -97,15 +105,17 @@ public class MainMenue extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        new Thread(new Sound("click.wav")).start();
         new HighScores().setVisible(true);
+        logger.info("high score table is opened");
+        
        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        new Thread(new Sound("click.wav")).start();
         this.dispose();
-        
+        logger.info("New Game button is clicked");
         new NumberOfPlayersSelection().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

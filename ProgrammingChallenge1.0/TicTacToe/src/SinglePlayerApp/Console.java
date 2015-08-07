@@ -6,6 +6,7 @@
 package SinglePlayerApp;
 
 import com.jtattoo.plaf.noire.NoireLookAndFeel;
+import java.util.Objects;
 
 /**
  *
@@ -18,9 +19,14 @@ public class Console {
     private char difficulty;
     private String playerName;
 //current game's score boars variables
-       private int player1Wins;
-       private int PCWins;
-       private int draw ;
+    private int player1Wins;
+    private int PCWins;
+    private int draw;
+
+    private boolean firstTurn;
+
+    char humanCard ;
+    char pcCard ;
     /* public Console(char difficulty, String playerName, GameMenu gameMenu) {
      gameMenu.dispose();
 
@@ -34,27 +40,60 @@ public class Console {
 
      }
      */
-    public Console(char difficulty, String playerName) {
+
+    public Console(char difficulty, String playerName, char humanCard) {
         this.difficulty = difficulty;
         this.playerName = playerName;
-        
+
         this.player1Wins = 0;
         this.PCWins = 0;
         this.draw = 0;
-        
+        this.firstTurn = true;
 
         TTT ttt = new TTT(this);
         ttt.setVisible(true);
-
-        game = new Game('x', 'o', ttt, difficulty, playerName); //for an example I give x to human (that means human plays first)
+        this.humanCard = humanCard;
+        this.pcCard = opponentSymbol(humanCard);
+        
+        this.game = new Game(this.humanCard, pcCard, ttt, difficulty, playerName); //for an example I give x to human (that means human plays first)
         //freeToPlay = true; // open the board to play
 
-        game.start();
+        this.game.start();
 
+    }
+
+    public void createNewGame(int previousActivePlayer) {
+        //humanCard = opponentSymbol(humanCard);
+       // pcCard = opponentSymbol(pcCard);
+        //make a new game
+        TTT ttt = new TTT(this);
+        setFirstTurn(!isFirstTurn());
+
+        ttt.setVisible(true);
+
+        this.game = new Game(this.humanCard, this.pcCard, ttt, difficulty, playerName); //for an example I give x to human (that means human plays first)
+        //freeToPlay = true; // open the board to play
+        
+      /*  if(previousActivePlayer == 1){
+            game.setActivePlayer(0);
+        }
+        else{
+            game.setActivePlayer(1);
+        }*/
+        
+        this.game.start();
     }
 
     public int getPlayer1Wins() {
         return player1Wins;
+    }
+
+    public boolean isFirstTurn() {
+        return firstTurn;
+    }
+
+    public void setFirstTurn(boolean turn) {
+        this.firstTurn = turn;
     }
 
     public void setPlayer1Wins(int player1Wins) {
@@ -85,23 +124,22 @@ public class Console {
         return game;
     }
 
-    public void createNewGame() {
-        //make a new game
-        TTT ttt = new TTT(this);
-
-        ttt.setVisible(true);
-
-        game = new Game('x', 'o', ttt, difficulty, playerName); //for an example I give x to human (that means human plays first)
-        //freeToPlay = true; // open the board to play
-        game.start();
-    }
-
     public boolean isFreeToPlay() {
         return freeToPlay;
     }
 
     public void setFreeToPlay(boolean freeToPlay) {
         this.freeToPlay = freeToPlay;
+    }
+    // get the symbol of the oponent player
+    public static char opponentSymbol(char pcSymbol) {
+        char t;
+        if (Objects.equals(pcSymbol, 'x')) {
+            t = 'o';
+        } else {
+            t = 'x';
+        }
+        return t;
     }
 
     /**
@@ -120,7 +158,7 @@ public class Console {
         }
         //</editor-fold>
 
-        new Console('d', "Malith");
+        new Console('d', "Malith",'d');
 
     }
 }

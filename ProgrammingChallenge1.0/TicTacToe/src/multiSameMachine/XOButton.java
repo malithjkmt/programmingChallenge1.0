@@ -9,6 +9,7 @@ package multiSameMachine;
  *
  * @author Malith
  */
+import audio.Sound;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
@@ -36,7 +37,7 @@ public class XOButton extends JButton implements ActionListener {
 
     }
 
-    public void actionPerformed(ActionEvent e) {
+    public synchronized void actionPerformed(ActionEvent e) {
         Object lock1 = ttt.getConsole().getGame().getLock1();
         Object lock2 = ttt.getConsole().getGame().getLock2();
 
@@ -51,6 +52,7 @@ public class XOButton extends JButton implements ActionListener {
             selected = true;
             switch (ttt.getConsole().getGame().getActivePlayer()) {   // check that who did this move (player0 or player1)
                 case 0:
+                    new Thread(new Sound("button.wav")).start();
                     setIcon(O);
                     ttt.getConsole().getGame().updateBoard(ttt.getSelectedCellRow(), ttt.getSelectedCellCol(), 'o'); // mark the play in the matrix
                     synchronized (lock1) {
@@ -61,6 +63,7 @@ public class XOButton extends JButton implements ActionListener {
                     ttt.getConsole().getGame().setActivePlayer(1);     // give playing hand to player1
                     break;
                 case 1:
+                    new Thread(new Sound("button.wav")).start();
                     setIcon(X);
                     ttt.getConsole().getGame().updateBoard(ttt.getSelectedCellRow(), ttt.getSelectedCellCol(), 'x'); // mark the play in the matrix
                     synchronized (lock2) {

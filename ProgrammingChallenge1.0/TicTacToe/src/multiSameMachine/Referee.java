@@ -4,18 +4,21 @@
 package multiSameMachine;
 
 import SinglePlayerApp.State;
+import audio.Sound;
 import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import db.DbConnector;
 import db.PersonDAC;
 import db.Person;
 import java.io.IOException;
 import java.sql.SQLException;
+import org.apache.log4j.Logger;
 
 public class Referee implements Runnable {
-
+    
+    Logger logger;
     Player player1;
     Player player2;
     private Game game;
@@ -29,6 +32,7 @@ public class Referee implements Runnable {
         this.player2 = player2;
         this.lock1 =lock1;
         this.lock2 = lock2;
+        logger=Logger.getLogger(Referee.class);
 
     }
 
@@ -124,21 +128,24 @@ public class Referee implements Runnable {
     public boolean CheckGameStatus(State state, char pcCard) {
 
         if (win(state, pcCard)) {
+            new Thread(new Sound("cheer.wav")).start();
             game.getTtt().getConsole().setPlayer2Wins(game.getTtt().getConsole().getPlayer2Wins()+1);
              game.getTtt().displayPlayer2Score();
 
             JOptionPane.showMessageDialog(game.getTtt(), game.getTtt().getConsole().getPlayer2Name()+" Won!");
+            logger.info(game.getTtt().getConsole().getPlayer2Name()+" won the game");
 
              updatePlayerDB(game.getPlayer2Name(), 'l');
             game.setGameOver(true);
             return true;
 
         } else if (win(state, opponentSymbol(pcCard))) {
+            new Thread(new Sound("cheer.wav")).start();
             game.getTtt().getConsole().setPlayer1Wins(game.getTtt().getConsole().getPlayer1Wins() + 1);
             game.getTtt().displayPlayer1Score();
 
             JOptionPane.showMessageDialog(game.getTtt(), game.getTtt().getConsole().getPlayer1Name()+" Won!!!!");
-
+            logger.info(game.getTtt().getConsole().getPlayer1Name()+" won the game");
               updatePlayerDB(game.getPlayer1Name(), 'w');
             game.setGameOver(true);
             return true;
@@ -147,7 +154,7 @@ public class Referee implements Runnable {
              game.getTtt().displayDraw();
 
             JOptionPane.showMessageDialog(game.getTtt(), "Game is a draw!!!!");
-
+            logger.info("Game is a draw");
              updatePlayerDB(game.getPlayer1Name(), 'd');
              updatePlayerDB(game.getPlayer2Name(), 'd');
             game.setGameOver(true);
@@ -184,9 +191,9 @@ public class Referee implements Runnable {
                 }
            
         } catch (IOException | SQLException ex) {
-            Logger.getLogger(Referee.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(Referee.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            Logger.getLogger(Referee.class.getName()).log(Level.SEVERE, null, ex);
+           // Logger.getLogger(Referee.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

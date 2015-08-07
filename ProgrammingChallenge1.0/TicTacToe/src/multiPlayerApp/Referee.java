@@ -3,15 +3,19 @@
  */
 package multiPlayerApp;
 
+import audio.Sound;
 import java.util.Objects;
 import javax.swing.JOptionPane;
+import org.apache.log4j.Logger;
 
 public class Referee {
 
     private Game game;
+    Logger logger;
 
     public Referee(Game game) {
         this.game = game;
+        logger=Logger.getLogger(Referee.class);
     }
 
     /**
@@ -60,19 +64,24 @@ public class Referee {
     //check the last play, if it's an end game finish the game and display the result
     public boolean CheckGameStatus(char pcCard) {
         if (win(pcCard)) {
+            new Thread(new Sound("ooh.wav")).start();
             JOptionPane.showMessageDialog(null, "Opponent Win");
-            game.setGameOver(true);
+            logger.info("Opponent win the game");
+           // game.setGameOver(true);
             return true;
 
         } else if (win(opponentSymbol(pcCard))) {
+            new Thread(new Sound("cheer.wav")).start();
             JOptionPane.showMessageDialog(null, "You Won!!!!");
+            logger.info("Player won the game");
 
-            game.setGameOver(true);
+           // game.setGameOver(true);
             return true;
         } else if (boardFull(game)) {
             JOptionPane.showMessageDialog(null, "Game is a draw!!!!");
+            logger.info("game is a draw");
 
-            game.setGameOver(true);
+           // game.setGameOver(true);
             return true;
         }
         return false;

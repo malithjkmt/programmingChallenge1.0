@@ -16,6 +16,10 @@ public class Player {
         System.out.println("Hello!!! bugger, now it's your move.. please hurry");
         
     }
+
+    public char getxORo() {
+        return xORo;
+    }
   
     
 }

@@ -5,8 +5,11 @@
  */
 package SinglePlayerUI;
 
+//import java.util.logging.Logger;
+import audio.Sound;
 import multiPlayerUI.TypeOfMultiPlayer;
 import multiPlayerUI.ServerOrClient;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -17,8 +20,10 @@ public class NumberOfPlayersSelection extends javax.swing.JFrame {
     /**
      * Creates new form Player
      */
+    Logger loger;
     public NumberOfPlayersSelection() {
         initComponents();
+        loger=Logger.getLogger(NumberOfPlayersSelection.class);
          setLocationRelativeTo(null);  // *** this will center the app ***
     }
 
@@ -35,9 +40,11 @@ public class NumberOfPlayersSelection extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tic Tac Toe 2015");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jButton1.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
@@ -53,12 +60,12 @@ public class NumberOfPlayersSelection extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 43;
         gridBagConstraints.ipady = 21;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(70, 60, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(80, 60, 0, 0);
         getContentPane().add(jButton1, gridBagConstraints);
 
         jButton2.setFont(new java.awt.Font("Kristen ITC", 1, 24)); // NOI18N
@@ -74,12 +81,12 @@ public class NumberOfPlayersSelection extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 49;
         gridBagConstraints.ipady = 31;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(76, 60, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(66, 60, 0, 0);
         getContentPane().add(jButton2, gridBagConstraints);
 
         jButton3.setFont(new java.awt.Font("Kristen ITC", 1, 18)); // NOI18N
@@ -96,20 +103,30 @@ public class NumberOfPlayersSelection extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 40;
         gridBagConstraints.ipady = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(126, 100, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(76, 110, 0, 0);
         getContentPane().add(jButton3, gridBagConstraints);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/Headmini.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipady = -3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(jLabel4, gridBagConstraints);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/BlackWodBig.jpg"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 4;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridheight = 5;
         gridBagConstraints.ipadx = 2;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(jLabel1, gridBagConstraints);
 
@@ -117,13 +134,17 @@ public class NumberOfPlayersSelection extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new Thread(new Sound("click.wav")).start();
+        loger.info("multiplayer mode is selectd");
         TypeOfMultiPlayer tom = new TypeOfMultiPlayer();
         this.setVisible(false);
         tom.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         this.dispose();
+        new Thread(new Sound("click.wav")).start();
+        loger.info("singleplayer mode is selected");
+        this.dispose();
         new GameMenu().setVisible(true);
        
        
@@ -133,6 +154,7 @@ public class NumberOfPlayersSelection extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new Thread(new Sound("click.wav")).start();
         dispose();
         new MainMenue().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -178,5 +200,6 @@ public class NumberOfPlayersSelection extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

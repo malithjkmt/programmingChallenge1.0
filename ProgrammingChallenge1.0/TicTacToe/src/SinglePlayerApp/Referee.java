@@ -3,15 +3,17 @@
  */
 package SinglePlayerApp;
 
+import audio.Sound;
 import java.util.Objects;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import db.DbConnector;
 import db.PersonDAC;
 import db.Person;
 import java.io.IOException;
 import java.sql.SQLException;
+import org.apache.log4j.Logger;
 
 public class Referee implements Runnable {
 
@@ -19,22 +21,24 @@ public class Referee implements Runnable {
     Pc pc;
     private Game game;
     private Object lock;
+    Logger logger;
 
     public Referee(Game game, Player human, Pc pc, Object lock) {
         this.game = game;
         this.pc = pc;
         this.human = human;
         this.lock = lock;
+      logger = Logger.getLogger(Referee.class);
 
     }
 
     
 
-    public void reffer() {
+    public void refferHumanFirst() {
         boolean over = false;
-
+ 
         while (!game.isGameOver()) {
-
+System.out.println("pc card is "+pc.getxORo());
             human.play();
 
             try {
@@ -52,7 +56,7 @@ public class Referee implements Runnable {
                 game.getTtt().closeGame();
                 break;
             }
-
+            
             pc.play();
             System.out.println("pc played!!!");
 
@@ -64,6 +68,46 @@ public class Referee implements Runnable {
                 break;
             }
             Console.freeToPlay = false; // lock the board until human plays
+
+        }
+    }
+    
+    public void refferPcFirst() {
+        boolean over = false;
+       
+        while (!game.isGameOver()) {
+ System.out.println("pc card is "+pc.getxORo());
+            pc.play();
+            System.out.println("pc played!!!");
+
+            game.printBoard();
+            over = CheckGameStatus(new State(game.getBoard()), pc.getxORo());
+
+            if (over) {
+                game.getTtt().closeGame();
+                break;
+            }
+              Console.freeToPlay = false; // lock the board until human plays
+              
+             human.play();
+
+            try {
+                synchronized (lock) {
+
+                    lock.wait();
+                }
+            } catch (InterruptedException e) {
+                System.out.println("INterrupted!!!!");
+            }
+
+            over = CheckGameStatus(new State(game.getBoard()), pc.getxORo());
+
+            if (over) {
+                game.getTtt().closeGame();
+                break;
+            }
+            
+          
 
         }
     }
@@ -115,11 +159,15 @@ public class Referee implements Runnable {
     public synchronized boolean CheckGameStatus(State state, char pcCard) {
 
         if (win(state, pcCard)) {
+            
+            new Thread(new Sound("ooh.wav")).start();
+            logger.info("Pc won the game");
             game.getTtt().getConsole().setPCWins(game.getTtt().getConsole().getPCWins()+1);
             game.getTtt().displayPlayer2Score();
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     JOptionPane.showMessageDialog(game.getTtt(), "Pc Won!");
+                    
                 }
             });
 
@@ -127,12 +175,15 @@ public class Referee implements Runnable {
             game.setGameOver(true);
             return true;
 
-        } else if (win(state, SmartPc.opponentSymbol(pcCard))) {
+        } else if (win(state, opponentSymbol(pcCard))) {
+           new Thread(new Sound("cheer.wav")).start();
+           logger.info(game.getTtt().getConsole().getPlayerName()+" won the game");
             game.getTtt().getConsole().setPlayer1Wins(game.getTtt().getConsole().getPlayer1Wins()+1);
             game.getTtt().displayPlayer1Score();
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    JOptionPane.showMessageDialog(game.getTtt(), "You Won!!!!");
+                    JOptionPane.showMessageDialog(game.getTtt(),"You Won!!!!");
+                    
                 }
             });
 
@@ -140,11 +191,13 @@ public class Referee implements Runnable {
             game.setGameOver(true);
             return true;
         } else if (boardFull(state)) {
+            logger.info("Game is a draw");
             game.getTtt().getConsole().setDraw(game.getTtt().getConsole().getDraw()+1);
             game.getTtt().displayDraw();
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     JOptionPane.showMessageDialog(game.getTtt(), "Game is a draw!!!!");
+                    
                 }
             });
 
@@ -160,7 +213,7 @@ public class Referee implements Runnable {
             DbConnector dbConnector = new DbConnector();
             PersonDAC personDAC = new PersonDAC(dbConnector.getMyConn());
             Person player = personDAC.searchPerson(PlayerName);
-
+            System.out.println("player is  "+PlayerName);
             String name = player.getName();
             int singleTotalPlays = player.getSingleTotalPlays();
             int singleEasyWins = player.getSingleEasyWins();
@@ -170,7 +223,7 @@ public class Referee implements Runnable {
             int multiTotalPlays = player.getMultiTotalPlays();
             int multidraws = player.getMultidraws();
             int multiWins = player.getMultiWins();
-
+            
             if (difficulty == 'e') {
                 if (winningStatus == 'w') {
                     personDAC.updatePerson(new Person(PlayerName, singleTotalPlays + 1, singleEasyWins + 1, singleEasyDraws, singleHardWins, singleHardDraws, multiTotalPlays, multidraws, multiWins));
@@ -193,16 +246,33 @@ public class Referee implements Runnable {
                 }
             }
         } catch (IOException | SQLException ex) {
-            Logger.getLogger(Referee.class.getName()).log(Level.SEVERE, null, ex);
+           // Logger.getLogger(Referee.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            Logger.getLogger(Referee.class.getName()).log(Level.SEVERE, null, ex);
+         //  Logger.getLogger(Referee.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    // get the symbol of the oponent player
+    public static char opponentSymbol(char pcSymbol) {
+        char t;
+        if (Objects.equals(pcSymbol, 'x')) {
+            t = 'o';
+        } else {
+            t = 'x';
+        }
+        return t;
     }
 
     @Override
     public void run() {
-        reffer();
+       // if(game.getTtt().getConsole().isFirstTurn()){
+            refferHumanFirst();
+       // }
+       // else{
+       //     refferPcFirst();
+       // }
+        
     }
 
 }

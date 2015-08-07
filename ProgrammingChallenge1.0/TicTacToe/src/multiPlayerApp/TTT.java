@@ -7,6 +7,7 @@ package multiPlayerApp;
 
 
 import SinglePlayerUI.MainMenue;
+import audio.Sound;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -104,6 +105,7 @@ public class TTT extends javax.swing.JFrame {
         b20 = new multiPlayerApp.XOButton(game);
         b21 = new multiPlayerApp.XOButton(game);
         b22 = new multiPlayerApp.XOButton(game);
+        jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
 
         NewGame.setMinimumSize(new java.awt.Dimension(400, 300));
@@ -234,7 +236,7 @@ public class TTT extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 22;
         gridBagConstraints.ipady = 27;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 170, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(50, 180, 0, 0);
         getContentPane().add(jButton7, gridBagConstraints);
 
         jPanel1.setOpaque(false);
@@ -284,6 +286,19 @@ public class TTT extends javax.swing.JFrame {
         b22.setContentAreaFilled(false);
         b22.setName("22"); // NOI18N
 
+        jPanel3.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 453, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 88, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -308,8 +323,9 @@ public class TTT extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addComponent(b21, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(b22, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(62, 62, 62))
+                        .addComponent(b22, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,7 +345,8 @@ public class TTT extends javax.swing.JFrame {
                     .addComponent(b20, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(b21, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(b22, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -337,9 +354,9 @@ public class TTT extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = -10;
-        gridBagConstraints.ipady = 35;
+        gridBagConstraints.ipady = -24;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 43, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(21, 43, 0, 0);
         getContentPane().add(jPanel1, gridBagConstraints);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/canvas.jpg"))); // NOI18N
@@ -367,7 +384,8 @@ public class TTT extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-         this.dispose();
+        new Thread(new Sound("click.wav")).start(); 
+        this.dispose();
         new MainMenue().setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -396,6 +414,7 @@ public class TTT extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
